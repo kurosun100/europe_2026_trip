@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>初めてのヨーロッパ家族旅行 ｜ 2026年9月シルバーウィーク</title>
+<style>
+  :root{
+    --cream:#fbf7ef; --paper:#ffffff; --ink:#2b2d33; --muted:#6b7077;
+    --navy:#1d3557; --teal:#2a9d8f; --teal-d:#22867a; --coral:#e76f51; --coral-d:#d65a3c;
+    --gold:#e9b949; --line:#ece4d6; --chip:#f1ece1;
+    --shadow:0 6px 20px rgba(40,40,60,.08); --shadow-l:0 2px 8px rgba(40,40,60,.06);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--cream); color:var(--ink);
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;
+    line-height:1.75; -webkit-font-smoothing:antialiased;
+  }
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+  a{color:var(--teal-d)}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;color:#fff;text-align:center;overflow:hidden;
+    background:linear-gradient(160deg,#1d3557 0%,#2a9d8f 58%,#e9b949 130%);
+    padding:54px 18px 60px;
+  }
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:34px;
+    background:var(--cream);border-radius:50% 50% 0 0/100% 100% 0 0;}
+  .hero .kicker{letter-spacing:.32em;font-size:12px;opacity:.92;margin:0 0 10px}
+  .hero h1{font-size:clamp(26px,5vw,40px);margin:0;font-weight:800;letter-spacing:.01em;line-height:1.3}
+  .hero .emojis{font-size:clamp(22px,4vw,30px);margin:14px 0 6px;letter-spacing:.16em}
+  .hero .dates{display:inline-block;margin-top:16px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.35);padding:9px 20px;border-radius:999px;font-weight:700;font-size:15px}
+  .hero .meta{margin:14px 0 0;font-size:13px;opacity:.95}
+  .tentative{display:inline-block;margin-top:12px;background:var(--coral);color:#fff;
+    font-size:12px;font-weight:700;padding:4px 12px;border-radius:999px}
+
+  /* ---------- NAV ---------- */
+  nav{position:sticky;top:0;z-index:10;background:rgba(251,247,239,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav ul{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;margin:0;padding:9px 10px}
+  nav a{display:inline-block;text-decoration:none;color:var(--navy);font-weight:700;font-size:13px;
+    padding:6px 12px;border-radius:999px}
+  nav a:hover{background:#fff;box-shadow:var(--shadow-l)}
+
+  /* ---------- SECTION ---------- */
+  section{padding:36px 0 8px}
+  .sec-head{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+  .sec-num{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:18px;box-shadow:var(--shadow-l)}
+  .sec-head h2{font-size:clamp(20px,3.4vw,26px);margin:0;font-weight:800}
+  .sec-head p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+  .c-teal{background:var(--teal)} .c-coral{background:var(--coral)}
+  .c-navy{background:var(--navy)} .c-gold{background:var(--gold)}
+
+  /* ---------- COUNTRY GRID ---------- */
+  .countries{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;align-items:start}
+  .country{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    padding:16px 16px 14px;box-shadow:var(--shadow-l)}
+  .country h3{margin:0 0 9px;font-size:16px;display:flex;align-items:center;gap:8px}
+  .country .flag{font-size:22px}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{background:var(--chip);color:#54585f;font-size:12px;padding:4px 10px;border-radius:999px;font-weight:600}
+  .chip.star{background:#fdf1d8;color:#9a7212}
+  .city-group{margin-top:10px}
+  .city-group:first-of-type{margin-top:6px}
+  .city-name{font-size:12px;font-weight:800;color:var(--coral-d);margin-bottom:5px}
+
+  /* ---------- PLAN CARDS ---------- */
+  .plan{position:relative;background:var(--paper);border:1px solid var(--line);
+    border-radius:var(--radius);box-shadow:var(--shadow);margin-bottom:22px;overflow:hidden}
+  .plan .stripe{height:7px}
+  .plan-body{padding:20px}
+  .plan-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .badge{flex:none;width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:22px}
+  .plan-title h3{margin:0;font-size:19px;font-weight:800}
+  .plan-title .sub{font-size:13px;color:var(--muted);margin-top:2px}
+  .reco{position:absolute;top:14px;right:-34px;transform:rotate(45deg);background:var(--coral);
+    color:#fff;font-size:12px;font-weight:800;padding:5px 40px;box-shadow:var(--shadow-l)}
+  .route{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin:16px 0 4px;font-weight:800;font-size:15px}
+  .route .stop{background:#eef6f4;color:var(--teal-d);padding:5px 12px;border-radius:10px}
+  .route .arrow{color:var(--coral);font-weight:800}
+  .nights{font-size:12px;color:var(--muted);font-weight:600;margin-left:2px}
+
+  .daystrip{display:grid;grid-template-columns:repeat(9,1fr);gap:5px;margin:16px 0}
+  .daystrip.ten{grid-template-columns:repeat(10,1fr)}
+  .day{background:#f7f3ea;border:1px solid var(--line);border-radius:9px;padding:6px 3px;text-align:center}
+  .day .d{font-size:10px;color:var(--muted);font-weight:700}
+  .day .city{font-size:11px;font-weight:700;margin-top:2px;line-height:1.25}
+  .day.move{background:#fdeee9;border-color:#f6d8cd}
+  .day.fly{background:#e9f1f0;border-color:#cfe5e1}
+
+  .spots{margin-top:8px;border-top:1px dashed var(--line);padding-top:14px;display:grid;gap:10px}
+  .spotrow{display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}
+  .spotrow .place{flex:none;min-width:150px;font-weight:800;font-size:14px}
+  .spotrow .place small{display:block;color:var(--muted);font-weight:600;font-size:11px}
+  .plan-foot{display:flex;flex-wrap:wrap;gap:10px;justify-content:space-between;align-items:center;
+    margin-top:16px;padding-top:14px;border-top:1px solid var(--line)}
+  .tag{font-size:13px;color:#54585f}
+  .cost{background:var(--navy);color:#fff;font-weight:800;font-size:14px;padding:7px 16px;border-radius:999px;white-space:nowrap}
+  .plan-divider{display:flex;align-items:center;gap:12px;margin:30px 0 18px}
+  .plan-divider::before,.plan-divider::after{content:"";flex:1;height:2px;
+    background:linear-gradient(90deg,var(--coral),var(--gold));border-radius:2px;opacity:.5}
+  .plan-divider span{font-weight:800;color:var(--navy);font-size:14.5px;white-space:nowrap;text-align:center}
+
+  /* ---------- COST TABLE ---------- */
+  table{width:100%;border-collapse:collapse;background:var(--paper);border-radius:var(--radius);
+    overflow:hidden;box-shadow:var(--shadow-l);font-size:14px}
+  th,td{padding:11px 14px;text-align:left;border-bottom:1px solid var(--line)}
+  th{background:#f3ede2;font-weight:800;font-size:13px}
+  td.num{text-align:right;font-weight:700;white-space:nowrap}
+  tr.total td{background:#eef6f4;font-weight:800;border-bottom:none}
+  .note{font-size:12.5px;color:var(--muted);margin-top:10px}
+  .ext{margin-top:14px;background:#eef6f4;border:1px dashed var(--teal);border-radius:12px;padding:12px 14px}
+  .ext-h{font-weight:800;font-size:13px;color:var(--teal-d);margin-bottom:5px}
+  .ext p{margin:0;font-size:12.5px;color:#46606a}
+  .mini-strip{display:flex;flex-wrap:wrap;gap:6px;margin-top:9px}
+  .mini{background:#fff;border:1px solid var(--line);border-radius:7px;font-size:11px;font-weight:700;padding:4px 9px;color:#46606a}
+  .mini.alt{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+  /* ---------- COMPANIES ---------- */
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .col{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow-l)}
+  .col h3{margin:0 0 4px;font-size:15px}
+  .col .lead{font-size:12px;color:var(--coral-d);font-weight:700;margin:0 0 10px}
+
+  /* ---------- SAFETY ---------- */
+  .safety{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+  .scard{background:var(--paper);border:1px solid var(--line);border-left:5px solid var(--teal);
+    border-radius:14px;padding:14px 16px;box-shadow:var(--shadow-l)}
+  .scard.warn{border-left-color:var(--coral)}
+  .scard h3{margin:0 0 4px;font-size:15px;display:flex;align-items:center;gap:8px}
+  .scard p{margin:0;font-size:13px;color:#52565d}
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{position:relative;margin-left:8px;padding-left:26px;border-left:3px solid var(--line)}
+  .tl{position:relative;margin-bottom:18px}
+  .tl::before{content:"";position:absolute;left:-34px;top:3px;width:15px;height:15px;border-radius:50%;
+    background:var(--coral);border:3px solid var(--cream)}
+  .tl .when{font-weight:800;font-size:14px;color:var(--navy)}
+  .tl .what{font-size:13.5px;color:#52565d;margin-top:2px}
+
+  footer{margin-top:30px;padding:26px 18px 40px;background:var(--navy);color:#cdd6df;text-align:center;font-size:12.5px}
+  footer strong{color:#fff}
+
+  @media(max-width:560px){
+    .daystrip,.daystrip.ten{grid-template-columns:repeat(3,1fr)}
+    .spotrow .place{min-width:120px}
+    .reco{font-size:11px;padding:4px 36px}
+  }
+  @media print{
+    nav{display:none} .hero{padding:30px 18px}
+    .plan,.country,.scard,.col,table{box-shadow:none}
+    body{background:#fff}
+  }
+</style>
+</head>
+<body>
+<p class="sr-only">家族4人・初めてのヨーロッパ旅行（2026年9月シルバーウィーク・仮日程9/19〜9/27・東京発）の計画書。観光地一覧、2カ国プラン4案（A・B・F・G）の周遊ルート、費用の目安、旅行会社、安全情報、予約タイムラインをまとめています。</p>
+
+<!-- HERO -->
+<header class="hero">
+  <p class="kicker">FAMILY TRIP TO EUROPE</p>
+  <h1>初めてのヨーロッパ家族旅行</h1>
+  <div class="emojis">🗼 🏛️ 🎨 🚄 ✈️</div>
+  <div class="dates">📅 2026.9.19 (土) 〜 9.27 (日) ／ 9日間</div>
+  <p class="meta">👨‍👩‍👧‍👦 大人4名　•　🛫 東京（羽田/成田）発　•　🌍 2カ国じっくり周遊</p>
+  <div><span class="tentative">※ 日程は仮置きです（有休2日＝9/24・25を使用）</span></div>
+</header>
+
+<!-- NAV -->
+<nav aria-label="目次">
+  <ul class="wrap">
+    <li><a href="#spots">観光地</a></li>
+    <li><a href="#plans">2カ国プラン</a></li>
+    <li><a href="#cost">費用</a></li>
+    <li><a href="#agency">旅行会社</a></li>
+    <li><a href="#safety">安全</a></li>
+    <li><a href="#schedule">予約の流れ</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+<!-- 1. 観光地一覧 -->
+<section id="spots">
+  <div class="sec-head">
+    <span class="sec-num c-teal">1</span>
+    <div><h2>ヨーロッパ 主要国・観光地</h2><p>★＝特に有名・初海外の鉄板スポット</p></div>
+  </div>
+  <div class="countries">
+
+    <div class="country"><h3><span class="flag">🇫🇷</span>フランス</h3>
+      <div class="city-group"><div class="city-name">📍 パリ</div>
+        <div class="chips"><span class="chip star">エッフェル塔</span><span class="chip star">ルーヴル美術館</span><span class="chip">オルセー美術館</span><span class="chip">凱旋門</span><span class="chip">ノートルダム大聖堂</span><span class="chip">サクレクール聖堂</span></div></div>
+      <div class="city-group"><div class="city-name">📍 パリ近郊</div>
+        <div class="chips"><span class="chip star">ヴェルサイユ宮殿</span><span class="chip">モンサンミッシェル</span><span class="chip">ジヴェルニー（モネの庭）</span></div></div>
+      <div class="city-group"><div class="city-name">📍 地方</div>
+        <div class="chips"><span class="chip">ニース（南仏）</span><span class="chip">モンブラン</span><span class="chip">ロワール古城</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇮🇹</span>イタリア</h3>
+      <div class="city-group"><div class="city-name">📍 ローマ</div>
+        <div class="chips"><span class="chip star">コロッセオ</span><span class="chip star">バチカン市国</span><span class="chip">トレヴィの泉</span><span class="chip">パンテオン</span><span class="chip">スペイン広場</span></div></div>
+      <div class="city-group"><div class="city-name">📍 フィレンツェ</div>
+        <div class="chips"><span class="chip star">ドゥオモ</span><span class="chip star">ウフィツィ美術館</span><span class="chip">ミケランジェロ広場</span></div></div>
+      <div class="city-group"><div class="city-name">📍 ヴェネツィア</div>
+        <div class="chips"><span class="chip star">サンマルコ広場</span><span class="chip">ゴンドラ</span><span class="chip">リアルト橋</span><span class="chip">ブラーノ島</span></div></div>
+      <div class="city-group"><div class="city-name">📍 その他</div>
+        <div class="chips"><span class="chip">ピサの斜塔</span><span class="chip">ミラノ</span><span class="chip">ナポリ・ポンペイ</span><span class="chip">アマルフィ海岸</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇬🇧</span>イギリス</h3>
+      <div class="city-group"><div class="city-name">📍 ロンドン</div>
+        <div class="chips"><span class="chip star">ビッグベン</span><span class="chip star">ロンドン塔</span><span class="chip star">大英博物館</span><span class="chip">バッキンガム宮殿</span><span class="chip">ロンドンアイ</span><span class="chip">タワーブリッジ</span></div></div>
+      <div class="city-group"><div class="city-name">📍 近郊</div>
+        <div class="chips"><span class="chip">ウィンザー城</span><span class="chip">コッツウォルズ</span><span class="chip">ストーンヘンジ</span><span class="chip">ハリーポッタースタジオ</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇪🇸</span>スペイン</h3>
+      <div class="city-group"><div class="city-name">📍 バルセロナ</div>
+        <div class="chips"><span class="chip star">サグラダ・ファミリア</span><span class="chip star">グエル公園</span><span class="chip">カサ・バトリョ</span><span class="chip">ピカソ美術館</span><span class="chip">ランブラス通り</span></div></div>
+      <div class="city-group"><div class="city-name">📍 マドリード</div>
+        <div class="chips"><span class="chip">プラド美術館</span><span class="chip">王宮</span></div></div>
+      <div class="city-group"><div class="city-name">📍 その他</div>
+        <div class="chips"><span class="chip star">アルハンブラ宮殿（グラナダ）</span><span class="chip">セビリア</span><span class="chip">トレド</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇨🇭</span>スイス</h3>
+      <div class="city-group"><div class="city-name">📍 アルプス</div>
+        <div class="chips"><span class="chip star">ユングフラウヨッホ</span><span class="chip">マッターホルン</span><span class="chip">リギ山・ピラトゥス山</span></div></div>
+      <div class="city-group"><div class="city-name">📍 街</div>
+        <div class="chips"><span class="chip">ルツェルン</span><span class="chip">インターラーケン</span><span class="chip">チューリッヒ</span><span class="chip">ベルン</span></div></div>
+      <div class="city-group"><div class="city-name">📍 絶景列車</div>
+        <div class="chips"><span class="chip">氷河特急</span><span class="chip">ベルニナ特急</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇩🇪</span>ドイツ</h3>
+      <div class="city-group"><div class="city-name">📍 ミュンヘン</div>
+        <div class="chips"><span class="chip star">ノイシュヴァンシュタイン城</span><span class="chip">マリエン広場</span><span class="chip">ロマンチック街道</span></div></div>
+      <div class="city-group"><div class="city-name">📍 ベルリン</div>
+        <div class="chips"><span class="chip">ブランデンブルク門</span><span class="chip">ベルリンの壁</span><span class="chip">博物館島</span></div></div>
+      <div class="city-group"><div class="city-name">📍 その他</div>
+        <div class="chips"><span class="chip">ライン川古城</span><span class="chip">ケルン大聖堂</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇦🇹</span>オーストリア</h3>
+      <div class="city-group"><div class="city-name">📍 ウィーン</div>
+        <div class="chips"><span class="chip star">シェーンブルン宮殿</span><span class="chip">美術史美術館</span><span class="chip">ベルヴェデーレ宮殿</span><span class="chip">シュテファン大聖堂</span><span class="chip">楽友協会</span></div></div>
+      <div class="city-group"><div class="city-name">📍 ザルツブルク</div>
+        <div class="chips"><span class="chip">モーツァルト生家</span><span class="chip">ミラベル庭園</span></div></div>
+      <div class="city-group"><div class="city-name">📍 近郊</div>
+        <div class="chips"><span class="chip star">ハルシュタット</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇳🇱</span>オランダ</h3>
+      <div class="city-group"><div class="city-name">📍 アムステルダム</div>
+        <div class="chips"><span class="chip star">国立美術館</span><span class="chip star">ゴッホ美術館</span><span class="chip">アンネ・フランクの家</span><span class="chip">運河クルーズ</span></div></div>
+      <div class="city-group"><div class="city-name">📍 近郊</div>
+        <div class="chips"><span class="chip">風車村ザーンセスカンス</span><span class="chip">デン・ハーグ（真珠の耳飾りの少女）</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇧🇪</span>ベルギー</h3>
+      <div class="city-group"><div class="city-name">📍 ブリュッセル</div>
+        <div class="chips"><span class="chip">グランプラス</span><span class="chip">小便小僧</span></div></div>
+      <div class="city-group"><div class="city-name">📍 その他</div>
+        <div class="chips"><span class="chip star">ブルージュ</span><span class="chip">ゲント</span><span class="chip">アントワープ</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇨🇿</span>チェコ</h3>
+      <div class="city-group"><div class="city-name">📍 プラハ</div>
+        <div class="chips"><span class="chip star">プラハ城</span><span class="chip">カレル橋</span><span class="chip">旧市街広場・天文時計</span></div></div>
+      <div class="city-group"><div class="city-name">📍 その他</div>
+        <div class="chips"><span class="chip">チェスキー・クルムロフ</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇬🇷</span>ギリシャ</h3>
+      <div class="city-group"><div class="city-name">📍 アテネ</div>
+        <div class="chips"><span class="chip star">パルテノン神殿（アクロポリス）</span></div></div>
+      <div class="city-group"><div class="city-name">📍 島</div>
+        <div class="chips"><span class="chip star">サントリーニ島</span><span class="chip">ミコノス島</span></div></div>
+      <div class="city-group"><div class="city-name">📍 その他</div>
+        <div class="chips"><span class="chip">メテオラ</span></div></div></div>
+
+    <div class="country"><h3><span class="flag">🇵🇹</span>ポルトガル</h3>
+      <div class="city-group"><div class="city-name">📍 リスボン</div>
+        <div class="chips"><span class="chip">ベレンの塔</span><span class="chip">ジェロニモス修道院</span><span class="chip">路面電車</span></div></div>
+      <div class="city-group"><div class="city-name">📍 その他</div>
+        <div class="chips"><span class="chip">ポルト</span><span class="chip">シントラ</span></div></div></div>
+
+  </div>
+</section>
+
+<!-- 2. 2カ国プラン -->
+<section id="plans">
+  <div class="sec-head">
+    <span class="sec-num c-coral">2</span>
+    <div><h2>2カ国じっくり周遊プラン（4案）</h2><p>「どこを回るか」がひと目でわかる早見版。費用は4人合計の目安です</p></div>
+  </div>
+
+  <!-- PLAN A -->
+  <article class="plan">
+    <div class="stripe" style="background:var(--coral)"></div>
+    <div class="plan-body">
+      <div class="plan-top">
+        <span class="badge c-coral">A</span>
+        <div class="plan-title"><h3>イタリア × フランス</h3><div class="sub">ローマの遺跡・フィレンツェの美術・パリの名所を一度に</div></div>
+      </div>
+      <div class="route">
+        <span class="stop">🇮🇹 ローマ<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇮🇹 フィレンツェ<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇫🇷 パリ<span class="nights"> 3泊</span></span>
+      </div>
+      <div class="daystrip">
+        <div class="day fly"><div class="d">9/19土</div><div class="city">🛬ローマ</div></div>
+        <div class="day"><div class="d">9/20日</div><div class="city">ローマ</div></div>
+        <div class="day move"><div class="d">9/21月</div><div class="city">🚄フィレンツェ</div></div>
+        <div class="day"><div class="d">9/22火</div><div class="city">フィレンツェ</div></div>
+        <div class="day fly"><div class="d">9/23水</div><div class="city">✈️パリ</div></div>
+        <div class="day"><div class="d">9/24木</div><div class="city">パリ</div></div>
+        <div class="day"><div class="d">9/25金</div><div class="city">パリ</div></div>
+        <div class="day fly"><div class="d">9/26土</div><div class="city">🛫帰国便</div></div>
+        <div class="day"><div class="d">9/27日</div><div class="city">🛬帰国</div></div>
+      </div>
+      <div class="spots">
+        <div class="spotrow"><span class="place">🇮🇹 ローマ<small>2泊</small></span><div class="chips"><span class="chip">コロッセオ</span><span class="chip">バチカン市国</span><span class="chip">トレヴィの泉</span></div></div>
+        <div class="spotrow"><span class="place">🇮🇹 フィレンツェ<small>2泊</small></span><div class="chips"><span class="chip">ドゥオモ</span><span class="chip">ウフィツィ美術館</span><span class="chip">ミケランジェロ広場</span></div></div>
+        <div class="spotrow"><span class="place">🇫🇷 パリ<small>3泊</small></span><div class="chips"><span class="chip">エッフェル塔</span><span class="chip">ルーヴル美術館</span><span class="chip">凱旋門</span><span class="chip">ヴェルサイユ宮殿</span></div></div>
+      </div>
+      <div class="plan-foot"><span class="tag">🏛️ 遺跡・美術・大聖堂をまるごと</span><span class="cost">約 230〜290 万円</span></div>
+    </div>
+  </article>
+
+  <!-- PLAN B -->
+  <article class="plan">
+    <div class="stripe" style="background:var(--teal)"></div>
+    <div class="plan-body">
+      <div class="plan-top">
+        <span class="badge c-teal">B</span>
+        <div class="plan-title"><h3>フランス × イギリス</h3><div class="sub">二大首都を電車で移動。移動がいちばんラクで初心者向き</div></div>
+      </div>
+      <div class="route">
+        <span class="stop">🇫🇷 パリ<span class="nights"> 4泊</span></span><span class="arrow">→ 🚄 →</span>
+        <span class="stop">🇬🇧 ロンドン<span class="nights"> 3泊</span></span>
+      </div>
+      <div class="daystrip">
+        <div class="day fly"><div class="d">9/19土</div><div class="city">🛬パリ</div></div>
+        <div class="day"><div class="d">9/20日</div><div class="city">パリ</div></div>
+        <div class="day"><div class="d">9/21月</div><div class="city">パリ</div></div>
+        <div class="day"><div class="d">9/22火</div><div class="city">パリ</div></div>
+        <div class="day move"><div class="d">9/23水</div><div class="city">🚄ロンドン</div></div>
+        <div class="day"><div class="d">9/24木</div><div class="city">ロンドン</div></div>
+        <div class="day"><div class="d">9/25金</div><div class="city">ロンドン</div></div>
+        <div class="day fly"><div class="d">9/26土</div><div class="city">🛫帰国便</div></div>
+        <div class="day"><div class="d">9/27日</div><div class="city">🛬帰国</div></div>
+      </div>
+      <div class="spots">
+        <div class="spotrow"><span class="place">🇫🇷 パリ<small>4泊</small></span><div class="chips"><span class="chip">エッフェル塔</span><span class="chip">ルーヴル美術館</span><span class="chip">オルセー美術館</span><span class="chip">凱旋門</span><span class="chip">ヴェルサイユ宮殿</span></div></div>
+        <div class="spotrow"><span class="place">🇬🇧 ロンドン<small>3泊</small></span><div class="chips"><span class="chip">ビッグベン</span><span class="chip">大英博物館</span><span class="chip">ロンドン塔</span><span class="chip">バッキンガム宮殿</span><span class="chip">ミュージカル</span></div></div>
+      </div>
+      <div class="plan-foot"><span class="tag">🚄 パリ⇄ロンドンは特急で約2.5時間</span><span class="cost">約 235〜295 万円</span></div>
+    </div>
+  </article>
+
+  <!-- PLAN F -->
+  <article class="plan">
+    <div class="stripe" style="background:var(--gold)"></div>
+    <div class="plan-body">
+      <div class="plan-top">
+        <span class="badge c-gold">F</span>
+        <div class="plan-title"><h3>ドイツ × オーストリア</h3><div class="sub">古城・音楽・宮殿・湖畔の村。落ち着いた街めぐり</div></div>
+      </div>
+      <div class="route">
+        <span class="stop">🇩🇪 ミュンヘン<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇦🇹 ザルツブルク<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇦🇹 ウィーン<span class="nights"> 3泊</span></span>
+      </div>
+      <div class="daystrip">
+        <div class="day fly"><div class="d">9/19土</div><div class="city">🛬ミュンヘン</div></div>
+        <div class="day"><div class="d">9/20日</div><div class="city">ミュンヘン</div></div>
+        <div class="day move"><div class="d">9/21月</div><div class="city">🚄ザルツブルク</div></div>
+        <div class="day"><div class="d">9/22火</div><div class="city">ザルツブルク</div></div>
+        <div class="day move"><div class="d">9/23水</div><div class="city">🚄ウィーン</div></div>
+        <div class="day"><div class="d">9/24木</div><div class="city">ウィーン</div></div>
+        <div class="day"><div class="d">9/25金</div><div class="city">ウィーン</div></div>
+        <div class="day fly"><div class="d">9/26土</div><div class="city">🛫帰国便</div></div>
+        <div class="day"><div class="d">9/27日</div><div class="city">🛬帰国</div></div>
+      </div>
+      <div class="spots">
+        <div class="spotrow"><span class="place">🇩🇪 ミュンヘン<small>2泊</small></span><div class="chips"><span class="chip">マリエン広場</span><span class="chip">ノイシュヴァンシュタイン城</span></div></div>
+        <div class="spotrow"><span class="place">🇦🇹 ザルツブルク<small>2泊</small></span><div class="chips"><span class="chip">モーツァルト生家</span><span class="chip">ミラベル庭園</span><span class="chip">ハルシュタット（日帰り）</span></div></div>
+        <div class="spotrow"><span class="place">🇦🇹 ウィーン<small>3泊</small></span><div class="chips"><span class="chip">シェーンブルン宮殿</span><span class="chip">美術史美術館</span><span class="chip">コンサート</span></div></div>
+      </div>
+      <div class="plan-foot"><span class="tag">🏰 童話のような城とクラシック音楽の街</span><span class="cost">約 235〜295 万円</span></div>
+    </div>
+  </article>
+
+  <!-- PLAN G -->
+  <article class="plan">
+    <div class="stripe" style="background:var(--navy)"></div>
+    <div class="plan-body">
+      <div class="plan-top">
+        <span class="badge c-navy">G</span>
+        <div class="plan-title"><h3>オランダ × フランス</h3><div class="sub">名画（ゴッホ・レンブラント）と運河、そしてパリ</div></div>
+      </div>
+      <div class="route">
+        <span class="stop">🇳🇱 アムステルダム<span class="nights"> 3泊</span></span><span class="arrow">→ 🚄 →</span>
+        <span class="stop">🇫🇷 パリ<span class="nights"> 4泊</span></span>
+      </div>
+      <div class="daystrip">
+        <div class="day fly"><div class="d">9/19土</div><div class="city">🛬アムス</div></div>
+        <div class="day"><div class="d">9/20日</div><div class="city">アムス</div></div>
+        <div class="day"><div class="d">9/21月</div><div class="city">アムス</div></div>
+        <div class="day move"><div class="d">9/22火</div><div class="city">🚄パリ</div></div>
+        <div class="day"><div class="d">9/23水</div><div class="city">パリ</div></div>
+        <div class="day"><div class="d">9/24木</div><div class="city">パリ</div></div>
+        <div class="day"><div class="d">9/25金</div><div class="city">パリ</div></div>
+        <div class="day fly"><div class="d">9/26土</div><div class="city">🛫帰国便</div></div>
+        <div class="day"><div class="d">9/27日</div><div class="city">🛬帰国</div></div>
+      </div>
+      <div class="spots">
+        <div class="spotrow"><span class="place">🇳🇱 アムステルダム<small>3泊</small></span><div class="chips"><span class="chip">国立美術館</span><span class="chip">ゴッホ美術館</span><span class="chip">運河クルーズ</span><span class="chip">風車村</span></div></div>
+        <div class="spotrow"><span class="place">🇫🇷 パリ<small>4泊</small></span><div class="chips"><span class="chip">エッフェル塔</span><span class="chip">ルーヴル美術館</span><span class="chip">オルセー美術館</span><span class="chip">ヴェルサイユ宮殿</span></div></div>
+      </div>
+      <div class="plan-foot"><span class="tag">🎨 美術館をたっぷり楽しみたい人に</span><span class="cost">約 235〜295 万円</span></div>
+    </div>
+  </article>
+
+  <!-- 3カ国 おすすめ -->
+  <div class="plan-divider"><span>🌍 もう1カ国 欲張るなら ── 3カ国プラン（基本の9日間）</span></div>
+
+  <article class="plan">
+    <div class="stripe" style="background:linear-gradient(90deg,var(--coral),var(--teal),var(--gold))"></div>
+    <div class="plan-body">
+      <div class="plan-top">
+        <span class="badge" style="background:var(--navy)">🌍</span>
+        <div class="plan-title"><h3>フランス × スイス × イタリア</h3><div class="sub">パリの名所＋アルプス絶景＋水の都。見どころ全部入りの周遊</div></div>
+      </div>
+      <div class="route">
+        <span class="stop">🇫🇷 パリ<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇨🇭 ルツェルン<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇮🇹 ミラノ<span class="nights"> 1泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇮🇹 ヴェネツィア<span class="nights"> 2泊</span></span>
+      </div>
+      <div class="daystrip">
+        <div class="day fly"><div class="d">9/19土</div><div class="city">🛬パリ</div></div>
+        <div class="day"><div class="d">9/20日</div><div class="city">パリ</div></div>
+        <div class="day move"><div class="d">9/21月</div><div class="city">🚄ルツェルン</div></div>
+        <div class="day"><div class="d">9/22火</div><div class="city">アルプス</div></div>
+        <div class="day move"><div class="d">9/23水</div><div class="city">🚄ミラノ</div></div>
+        <div class="day move"><div class="d">9/24木</div><div class="city">🚄ヴェネツィア</div></div>
+        <div class="day"><div class="d">9/25金</div><div class="city">ヴェネツィア</div></div>
+        <div class="day fly"><div class="d">9/26土</div><div class="city">🛫帰国便</div></div>
+        <div class="day"><div class="d">9/27日</div><div class="city">🛬帰国</div></div>
+      </div>
+      <div class="spots">
+        <div class="spotrow"><span class="place">🇫🇷 パリ<small>2泊</small></span><div class="chips"><span class="chip">エッフェル塔</span><span class="chip">ルーヴル美術館</span><span class="chip">凱旋門</span></div></div>
+        <div class="spotrow"><span class="place">🇨🇭 ルツェルン<small>2泊・スイス</small></span><div class="chips"><span class="chip">ユングフラウヨッホ</span><span class="chip">アルプス絶景</span><span class="chip">カペル橋</span></div></div>
+        <div class="spotrow"><span class="place">🇮🇹 ミラノ<small>1泊</small></span><div class="chips"><span class="chip">ドゥオモ</span><span class="chip">最後の晩餐</span></div></div>
+        <div class="spotrow"><span class="place">🇮🇹 ヴェネツィア<small>2泊</small></span><div class="chips"><span class="chip">サンマルコ広場</span><span class="chip">ゴンドラ</span><span class="chip">ブラーノ島</span></div></div>
+      </div>
+      <div class="plan-foot"><span class="tag">🏔️ 名所＋アルプス＋水の都を一度に</span><span class="cost">約 260〜320 万円</span></div>
+    </div>
+  </article>
+
+  <!-- 3カ国 10日間版 -->
+  <div class="plan-divider"><span>📅 同じ3カ国を「10日間（有休3日）」にするなら</span></div>
+
+  <article class="plan">
+    <div class="stripe" style="background:linear-gradient(90deg,var(--coral),var(--teal),var(--gold))"></div>
+    <div class="plan-body">
+      <div class="plan-top">
+        <span class="badge" style="background:var(--navy)">🌍</span>
+        <div class="plan-title"><h3>フランス × スイス × イタリア（10日間版）</h3><div class="sub">有休3日で5都市に。フィレンツェ（ウフィツィ美術館）を加えた拡張ルート</div></div>
+      </div>
+      <div class="route">
+        <span class="stop">🇫🇷 パリ<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇨🇭 ルツェルン<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇮🇹 ミラノ<span class="nights"> 1泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇮🇹 ヴェネツィア<span class="nights"> 2泊</span></span><span class="arrow">→</span>
+        <span class="stop">🇮🇹 フィレンツェ<span class="nights"> 1泊</span></span>
+      </div>
+      <div class="daystrip ten">
+        <div class="day fly"><div class="d">9/19土</div><div class="city">🛬パリ</div></div>
+        <div class="day"><div class="d">9/20日</div><div class="city">パリ</div></div>
+        <div class="day move"><div class="d">9/21月</div><div class="city">🚄ルツェルン</div></div>
+        <div class="day"><div class="d">9/22火</div><div class="city">アルプス</div></div>
+        <div class="day move"><div class="d">9/23水</div><div class="city">🚄ミラノ</div></div>
+        <div class="day move"><div class="d">9/24木</div><div class="city">🚄ヴェネツィア</div></div>
+        <div class="day"><div class="d">9/25金</div><div class="city">ヴェネツィア</div></div>
+        <div class="day move"><div class="d">9/26土</div><div class="city">🚄フィレンツェ</div></div>
+        <div class="day fly"><div class="d">9/27日</div><div class="city">🛫帰国便</div></div>
+        <div class="day"><div class="d">9/28月</div><div class="city">🛬帰国</div></div>
+      </div>
+      <div class="spots">
+        <div class="spotrow"><span class="place">🇫🇷 パリ<small>2泊</small></span><div class="chips"><span class="chip">エッフェル塔</span><span class="chip">ルーヴル美術館</span><span class="chip">凱旋門</span></div></div>
+        <div class="spotrow"><span class="place">🇨🇭 ルツェルン<small>2泊・スイス</small></span><div class="chips"><span class="chip">ユングフラウヨッホ</span><span class="chip">アルプス絶景</span><span class="chip">カペル橋</span></div></div>
+        <div class="spotrow"><span class="place">🇮🇹 ミラノ<small>1泊</small></span><div class="chips"><span class="chip">ドゥオモ</span><span class="chip">最後の晩餐</span></div></div>
+        <div class="spotrow"><span class="place">🇮🇹 ヴェネツィア<small>2泊</small></span><div class="chips"><span class="chip">サンマルコ広場</span><span class="chip">ゴンドラ</span><span class="chip">ブラーノ島</span></div></div>
+        <div class="spotrow"><span class="place">🇮🇹 フィレンツェ<small>1泊</small></span><div class="chips"><span class="chip">ドゥオモ</span><span class="chip">ウフィツィ美術館</span><span class="chip">ミケランジェロ広場</span></div></div>
+      </div>
+      <div class="plan-foot"><span class="tag">🏔️🎨 名所＋アルプス＋水の都＋美術の街を一度に</span><span class="cost">約 280〜340 万円</span></div>
+    </div>
+  </article>
+  <p class="note">※ どちらも3カ国は移動が多めです。詰め込みが苦手なら、都市を増やさず各都市をゆっくり回る選択もできます。</p>
+</section>
+
+<!-- 3. 費用 -->
+<section id="cost">
+  <div class="sec-head">
+    <span class="sec-num c-navy">3</span>
+    <div><h2>費用の目安（4人合計・9日間）</h2><p>フリープラン（航空券＋ホテルを会社手配・現地は自由）想定</p></div>
+  </div>
+  <table>
+    <thead><tr><th>項目</th><th class="num">目安（4人合計）</th><th>補足</th></tr></thead>
+    <tbody>
+      <tr><td>✈️ 航空券（エコノミー）</td><td class="num">100〜140万円</td><td>直行は1人25〜35万。経由便で1人3〜5万安</td></tr>
+      <tr><td>🏨 ホテル（4★・2部屋×7泊）</td><td class="num">42〜70万円</td><td>中心部の立地（安全面でも有利）</td></tr>
+      <tr><td>🚄 域内移動（鉄道・域内便）</td><td class="num">12〜24万円</td><td>高速鉄道・国際線・特急など</td></tr>
+      <tr><td>🍝 食事</td><td class="num">35〜50万円</td><td>1人1日 1〜2万円</td></tr>
+      <tr><td>🎫 観光・入場・保険・eSIM等</td><td class="num">25〜40万円</td><td>美術館予約・海外旅行保険は必須</td></tr>
+      <tr class="total"><td>合計（フリープラン）</td><td class="num">約 215〜290万円</td><td>予算300万円内に収まる見込み</td></tr>
+    </tbody>
+  </table>
+  <p class="note">※ 添乗員付きツアーは8日間で1人61〜72万円帯（4人で約260〜330万円・個人支出別途）。日程を10日に延ばす場合は＋10〜20万円ほど。</p>
+</section>
+
+<!-- 4. 旅行会社 -->
+<section id="agency">
+  <div class="sec-head">
+    <span class="sec-num c-teal">4</span>
+    <div><h2>旅行会社・予約先</h2><p>「フリープラン型」を第一おすすめ（安心と自由のバランス）</p></div>
+  </div>
+  <div class="cols">
+    <div class="col"><h3>🧑‍✈️ 添乗員付きツアー</h3><p class="lead">いちばん安心・全部おまかせ</p>
+      <div class="chips"><span class="chip">JTB</span><span class="chip">阪急交通社</span><span class="chip">クラブツーリズム</span><span class="chip">JALパック</span><span class="chip">日本旅行</span><span class="chip">HIS</span></div></div>
+    <div class="col"><h3>🧳 フリープラン型 <small>★推奨</small></h3><p class="lead">航空券＋ホテルは手配、現地は自由</p>
+      <div class="chips"><span class="chip">JTBマイスタイル</span><span class="chip">JALパック</span><span class="chip">HIS</span></div></div>
+    <div class="col"><h3>📍 現地オプショナルツアー</h3><p class="lead">不安な区間だけ安心を買う</p>
+      <div class="chips"><span class="chip">VELTRA</span><span class="chip">GetYourGuide</span><span class="chip">みゅう</span></div></div>
+    <div class="col"><h3>💻 個人手配（自分で予約）</h3><p class="lead">最安・最自由だが手間あり</p>
+      <div class="chips"><span class="chip">Google Flights</span><span class="chip">スカイスキャナー</span><span class="chip">Booking.com</span><span class="chip">Omio（鉄道）</span></div></div>
+  </div>
+</section>
+
+<!-- 5. 安全 -->
+<section id="safety">
+  <div class="sec-head">
+    <span class="sec-num c-coral">5</span>
+    <div><h2>安全について</h2><p>「ふつうに注意すれば大丈夫」レベル。テロ・紛争のような危険はありません</p></div>
+  </div>
+  <div class="safety">
+    <div class="scard"><h3>✅ 危険情報なし</h3><p>イタリア・フランス・スペインなど人気国とも、外務省の特段の危険情報は出ていません（最も安全な区分）。</p></div>
+    <div class="scard warn"><h3>👜 最大の注意はスリ</h3><p>観光地・主要駅・地下鉄・写真撮影中が要注意。バッグは体の前、スマホ・財布は分散して持つのが基本。</p></div>
+    <div class="scard warn"><h3>🚇 交通ストライキ</h3><p>イタリア・フランスでは時々スト（電車・美術館が止まる）。出発前に情報確認し、移動日は予定に余裕を。</p></div>
+    <div class="scard"><h3>🛂 入国の新ルール</h3><p>入国時に顔写真・指紋の登録（EES）。審査が混むことがあるので空港は時間に余裕を。海外旅行保険は必須。</p></div>
+  </div>
+</section>
+
+<!-- 6. 予約タイムライン -->
+<section id="schedule">
+  <div class="sec-head">
+    <span class="sec-num c-gold">6</span>
+    <div><h2>予約の流れ（タイムライン）</h2><p>長距離便は早いほど安い。早めの決断が得策です</p></div>
+  </div>
+  <div class="timeline">
+    <div class="tl"><div class="when">① 〜7月上旬（最優先）</div><div class="what">プランとスタイルを決定 → まず航空券を確保（シルバーウィークの長距離便は早割の山）。</div></div>
+    <div class="tl"><div class="when">② 7月中</div><div class="what">ホテル（中心部4★・2部屋）と域内移動（高速鉄道・国際線）を予約。</div></div>
+    <div class="tl"><div class="when">③ 8月</div><div class="what">人気の美術館・施設の入場予約、現地ツアー、海外旅行保険・eSIMを手配。</div></div>
+    <div class="tl"><div class="when">④ 9月直前</div><div class="what">入国ルールの最新確認、スト情報チェック、現地通貨を少し準備、予約・パスポートのコピー。</div></div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <p><strong>初めてのヨーロッパ家族旅行</strong>　•　2026年9月シルバーウィーク（仮日程 9/19〜9/27）</p>
+  <p>※ 本資料は計画検討用のたたき台です。日程・費用は目安で、最終的な価格・運行・入国制度は予約時に各社・公式サイトでご確認ください。</p>
+</footer>
+
+</body>
+</html>
