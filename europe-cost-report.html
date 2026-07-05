@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ヨーロッパ家族旅行 実費調査レポート v2 ｜ 2026年9月SW</title>
+<style>
+  :root{
+    --cream:#fbf7ef; --paper:#ffffff; --ink:#2b2d33; --muted:#6b7077;
+    --navy:#1d3557; --teal:#2a9d8f; --teal-d:#22867a; --coral:#e76f51; --coral-d:#d65a3c;
+    --gold:#e9b949; --line:#ece4d6; --chip:#f1ece1;
+    --ok:#2a9d8f; --warn:#e9a949; --ng:#e76f51;
+    --shadow:0 6px 20px rgba(40,40,60,.08); --shadow-l:0 2px 8px rgba(40,40,60,.06);
+    --radius:18px;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--cream);color:var(--ink);
+    font-family:"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP",Meiryo,sans-serif;
+    line-height:1.75;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:980px;margin:0 auto;padding:0 18px}
+  a{color:var(--teal-d)}
+
+  .hero{position:relative;color:#fff;text-align:center;overflow:hidden;
+    background:linear-gradient(160deg,#1d3557 0%,#2a9d8f 58%,#e9b949 130%);
+    padding:54px 18px 60px}
+  .hero::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:34px;
+    background:var(--cream);border-radius:50% 50% 0 0/100% 100% 0 0}
+  .hero .kicker{letter-spacing:.32em;font-size:12px;opacity:.92;margin:0 0 10px}
+  .hero h1{font-size:clamp(24px,5vw,38px);margin:0;font-weight:800;line-height:1.35}
+  .hero .dates{display:inline-block;margin-top:16px;background:rgba(255,255,255,.16);
+    border:1px solid rgba(255,255,255,.35);padding:9px 20px;border-radius:999px;font-weight:700;font-size:15px}
+  .hero .meta{margin:14px auto 0;font-size:13px;opacity:.95;max-width:680px}
+  .vtag{display:inline-block;margin-top:12px;background:var(--coral);color:#fff;
+    font-size:12px;font-weight:700;padding:4px 14px;border-radius:999px}
+
+  nav{position:sticky;top:0;z-index:10;background:rgba(251,247,239,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+  nav ul{display:flex;flex-wrap:wrap;gap:6px;justify-content:center;list-style:none;margin:0;padding:9px 10px}
+  nav a{display:inline-block;text-decoration:none;color:var(--navy);font-weight:700;font-size:13px;
+    padding:6px 12px;border-radius:999px}
+  nav a:hover{background:#fff;box-shadow:var(--shadow-l)}
+
+  section{padding:36px 0 8px}
+  .sec-head{display:flex;align-items:center;gap:12px;margin:0 0 18px}
+  .sec-num{flex:none;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;
+    color:#fff;font-weight:800;font-size:18px;box-shadow:var(--shadow-l)}
+  .sec-head h2{font-size:clamp(20px,3.4vw,26px);margin:0;font-weight:800}
+  .sec-head p{margin:2px 0 0;font-size:13px;color:var(--muted)}
+  .c-teal{background:var(--teal)} .c-coral{background:var(--coral)}
+  .c-navy{background:var(--navy)} .c-gold{background:var(--gold)}
+
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);
+    box-shadow:var(--shadow-l);padding:18px 20px;margin-bottom:16px}
+  .card h3{margin:0 0 10px;font-size:16px}
+
+  .verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+  .verdict .card{margin:0;border-top:5px solid var(--teal)}
+  .verdict .card.coral{border-top-color:var(--coral)}
+  .verdict .card.gold{border-top-color:var(--gold)}
+  .verdict .card.navy{border-top-color:var(--navy)}
+  .verdict .q{font-size:12px;font-weight:800;color:var(--muted);letter-spacing:.08em;margin:0 0 6px}
+  .verdict .a{font-size:15px;font-weight:800;margin:0 0 6px}
+  .verdict .why{font-size:13px;color:var(--muted);margin:0}
+
+  .tblwrap{overflow-x:auto;margin-bottom:14px}
+  table{border-collapse:collapse;width:100%;background:var(--paper);border-radius:12px;overflow:hidden;
+    box-shadow:var(--shadow-l);font-size:13.5px;min-width:560px}
+  th,td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+  th{background:var(--navy);color:#fff;font-size:12.5px;letter-spacing:.04em;white-space:nowrap}
+  tr:last-child td{border-bottom:none}
+  td.num{white-space:nowrap;font-weight:700}
+  .hl{background:#fdf3e0}
+
+  .itin td:first-child{white-space:nowrap;font-weight:800;color:var(--coral-d)}
+  .note{background:var(--chip);border-radius:12px;padding:12px 16px;font-size:13px;color:#54585f;margin:10px 0}
+  .note b{color:var(--ink)}
+  ul.tight{margin:6px 0;padding-left:20px}
+  ul.tight li{margin:4px 0}
+  .lever{display:flex;gap:10px;align-items:flex-start;margin:8px 0}
+  .lever .n{flex:none;width:26px;height:26px;border-radius:8px;background:var(--teal);color:#fff;
+    display:grid;place-items:center;font-weight:800;font-size:14px;margin-top:2px}
+  .src{font-size:12px;color:var(--muted)}
+  .src li{margin:3px 0}
+  footer{text-align:center;font-size:12px;color:var(--muted);padding:28px 12px 40px}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <p class="kicker">FAMILY TRIP · COST RESEARCH v2</p>
+  <h1>ヨーロッパ家族旅行 実費調査レポート<br>パリ × ローマ ＋ ディズニー泊</h1>
+  <div class="dates">2026/9/19(土) 〜 9/27(日) ・ 9日間 ・ 大人4人</div>
+  <p class="meta">予算：目安200〜250万円／上限300万円 ・ フリープラン型で確定 ・ ホテルは防犯優先<br>
+  調査日 2026/7/5 ・ 為替 1€≈185円 / 1£≈215円（7/4実勢）</p>
+  <span class="vtag">v2：モンサンミッシェル削除 → ディズニー泊採用・初心者向けに余裕を追加</span>
+</header>
+
+<nav aria-label="目次">
+  <ul>
+    <li><a href="#s1">結論</a></li>
+    <li><a href="#s2">初心者配慮</a></li>
+    <li><a href="#s3">旅程 v2</a></li>
+    <li><a href="#s4">費用内訳</a></li>
+    <li><a href="#s5">ホテル戦略</a></li>
+    <li><a href="#s6">食事ガイド</a></li>
+    <li><a href="#s7">次のアクション</a></li>
+    <li><a href="#s8">注意・出典</a></li>
+  </ul>
+</nav>
+
+<main class="wrap">
+
+<section id="s1">
+  <div class="sec-head">
+    <div class="sec-num c-teal">1</div>
+    <div><h2>結論ダイジェスト</h2><p>v2＝オーナー決定を反映した確定方針</p></div>
+  </div>
+  <div class="verdict">
+    <div class="card">
+      <p class="q">行き先と総額</p>
+      <p class="a">🗼 パリ4泊＋🏰ディズニー1泊＋🍝ローマ2泊 ＝ 約230〜330万円</p>
+      <p class="why">現実的な狙い目は260〜300万円。7月中の航空券確保＋€300〜350/室帯のホテル選択で上限300万円内。</p>
+    </div>
+    <div class="card coral">
+      <p class="q">ディズニーの入れ方</p>
+      <p class="a">✨ 9/23終日＋ディズニーホテル泊→翌朝そのまま空港へ</p>
+      <p class="why">ディズニー（マルヌ・ラ・ヴァレ）はCDG空港と直結（TGV1駅約10分／シャトル約45分）。パリ市内へ戻らない一筆書き動線で、移動の無駄ゼロ。</p>
+    </div>
+    <div class="card gold">
+      <p class="q">旅程の余裕</p>
+      <p class="a">🌿 モンサンミッシェル削除で「1日1メイン」に再構成</p>
+      <p class="why">往復13.5時間のバス日が消滅。パリは午前に予約制の目玉1つ＋午後は散策・自由時間の構成に。</p>
+    </div>
+    <div class="card navy">
+      <p class="q">手配</p>
+      <p class="a">🧳 フリープラン型で確定（2〜3社見積もり）</p>
+      <p class="why">JTB／HIS／阪急に同条件見積もり→個人手配と比較。ディズニーホテルのみ公式直予約になる可能性あり（§7）。</p>
+    </div>
+  </div>
+</section>
+
+<section id="s2">
+  <div class="sec-head">
+    <div class="sec-num c-navy">2</div>
+    <div><h2>ヨーロッパ初心者への配慮</h2><p>「考慮されているか？」→ している（v2でさらに強化）</p></div>
+  </div>
+  <div class="tblwrap">
+  <table>
+    <tr><th>配慮</th><th>内容</th></tr>
+    <tr><td>飛行機は直行便のみ</td><td>羽田→パリ（約14.5h）／ローマ→羽田（ITA直行・毎日）。<b>乗り継ぎゼロ</b>＝ロストバゲージ・乗り遅れリスク最小</td></tr>
+    <tr><td>都市は2つだけ</td><td>周遊バス・夜行移動なし。都市間はたった1フライト（約2h・昼間）</td></tr>
+    <tr><td>ホテル移動は最小</td><td>パリ4連泊→ディズニー1泊→ローマ2泊。<b>チェックインは計3回だけ</b></td></tr>
+    <tr><td>フリープラン型</td><td>航空券・ホテルは旅行会社手配＝<b>日本語の緊急サポート窓口つき</b>。欠航時に自力交渉不要</td></tr>
+    <tr><td>初日・最終日は予定なし</td><td>到着日の夜は近所で夕食のみ（時差ボケ対策）。帰国便は14:55発で最終日午前もゆっくり</td></tr>
+    <tr><td>入場券は全て事前予約</td><td>ルーヴル・ヴェルサイユ・エッフェル塔は時間指定券＝並ばない・チケット詐欺に遭わない</td></tr>
+    <tr><td>防犯はホテルの立地で買う</td><td>治安の良い区に固定（§5）。移動はすべて昼間</td></tr>
+  </table>
+  </div>
+</section>
+
+<section id="s3">
+  <div class="sec-head">
+    <div class="sec-num c-coral">3</div>
+    <div><h2>旅程 v2（余裕をもたせた初心者版）</h2><p>1日1メイン・午後はゆっくり</p></div>
+  </div>
+  <div class="tblwrap">
+  <table class="itin">
+    <tr><th>日</th><th>行程</th><th>余裕ポイント</th></tr>
+    <tr><td>9/19(土)</td><td>羽田 午前発 →✈️ パリ夕方着。送迎でホテルへ。近所で軽く夕食のみ【パリ泊①】</td><td>到着日は観光ゼロ＝時差ボケ対策</td></tr>
+    <tr><td>9/20(日)</td><td>午前：🎫ルーヴル美術館／午後：チュイルリー公園散歩／夕方：セーヌ川クルーズ（1時間・座るだけ）【パリ泊②】</td><td>午後は歩くだけ。疲れたらカフェ</td></tr>
+    <tr><td>9/21(月祝)</td><td>終日：🎫ヴェルサイユ宮殿（午前予約・午後は庭園をゆっくり）【パリ泊③】</td><td>1日1か所。庭園で休憩自在</td></tr>
+    <tr><td>9/22(火祝)</td><td>午前：🎫エッフェル塔昇塔／午後：ノートルダム大聖堂（無料）→シテ島散策／夕方：凱旋門屋上（夕景）→シャンゼリゼ【パリ泊④】</td><td>全部中心部で移動短い。凱旋門は体力次第でカット可</td></tr>
+    <tr><td>9/23(水祝)</td><td>朝：RER約40分→<b>終日パリディズニー</b>。夜：🏰ディズニーホテル泊【ディズニー泊⑤】</td><td>閉園まで居られて、並び疲れたらすぐ部屋へ</td></tr>
+    <tr><td>9/24(木)</td><td>朝：ディズニー→CDG（TGV1駅約10分 or シャトル約45分）→✈️昼便でローマ（約2h）／夕方：トレヴィの泉・パンテオン散歩／夜：トラステヴェレで夕食【ローマ泊⑥】</td><td>パリ市内へ戻らない一筆書き</td></tr>
+    <tr><td>9/25(金)</td><td>午前：テスタッチョ市場食べ歩き／昼：本場カルボナーラ／午後：昼寝 or コロッセオ・バチカン（任意）／夜：フードツアー or トラットリア【ローマ泊⑦】</td><td>「食べるための日」。観光ゼロでもよい</td></tr>
+    <tr><td>9/26(土)</td><td>午前：ゆっくり朝食・買い物 →✈️ ローマFCO 14:55発 ITA直行（AZ792）【機中泊】</td><td>朝の慌ただしさなし</td></tr>
+    <tr><td>9/27(日)</td><td>羽田 10:25着。</td><td>日曜午前帰国＝月曜出勤に余裕</td></tr>
+  </table>
+  </div>
+  <div class="note"><b>v1からの変更：</b>モンサンミッシェル（7:20〜21:00の13.5時間バス日）を削除→パリ観光を4日に分散して詰め込み解消。ディズニーを終日追加し、ディズニー→CDG直結を活かして移動日と合体。</div>
+</section>
+
+<section id="s4">
+  <div class="sec-head">
+    <div class="sec-num c-teal">4</div>
+    <div><h2>費用内訳 v2（4人・防犯重視ホテル・ディズニー込み）</h2><p>2026/7/5時点の実勢価格ベース</p></div>
+  </div>
+  <div class="tblwrap">
+  <table>
+    <tr><th>費目</th><th>実勢価格</th><th>4人合計</th></tr>
+    <tr><td>国際線（オープンジョー・直行）</td><td>25〜33万円/人（<b>7月中の購入で下限寄せ</b>）</td><td class="num">100〜132万</td></tr>
+    <tr><td>パリのホテル（2部屋×4泊）</td><td>4★上位 €300〜450/室/泊（オペラ／サンジェルマン／7区）</td><td class="num">44〜67万</td></tr>
+    <tr><td>ディズニーホテル（1泊）</td><td>ニューポートベイ・クラブ（4★格）6〜9万円/室 ※4名可の部屋あり・要確認。2室ならセコイア／シャイエンで8〜14万</td><td class="num">6〜14万</td></tr>
+    <tr><td>ディズニー1日券（1パーク）</td><td>約1.0〜1.9万円/人（日付変動制・9/23は平日で中間帯見込み）</td><td class="num">4〜7.6万</td></tr>
+    <tr><td>ローマのホテル（2部屋×2泊）</td><td>4★ €200〜300/室/泊（プラーティ／スペイン広場周辺。<b>テルミニ周辺は防犯優先で回避</b>）</td><td class="num">15〜22万</td></tr>
+    <tr><td>パリ（CDG）→ローマ 片道</td><td>€50〜150/人（ITA・エールフランス。荷物込みで比較）</td><td class="num">4.5〜11万</td></tr>
+    <tr><td>パリ観光チケット</td><td>ルーヴル€30＋ヴェルサイユ€35＋エッフェル塔頂上€35.30＋凱旋門€16＋セーヌクルーズ€15＝€131.3/人</td><td class="num">約9.7万</td></tr>
+    <tr><td>ローマ観光・食体験</td><td>フードツアー約$137/人 or コロッセオ＋バチカン€40〜50/人（任意）</td><td class="num">4.5〜7.5万</td></tr>
+    <tr><td>食費（7.5日）</td><td>1人1日1〜1.5万円（§6参照。ディナークルーズ実施なら+10.4〜13万）</td><td class="num">30〜45万</td></tr>
+    <tr><td>市内交通・空港送迎・ディズニー⇔CDG</td><td>メトロ・RER・送迎・シャトル</td><td class="num">6〜9万</td></tr>
+    <tr><td>保険・eSIM・雑費</td><td>海外旅行保険（必須）＋eSIM＋予備</td><td class="num">3〜5万</td></tr>
+    <tr class="hl"><td><b>合計</b></td><td>狙い目＝260〜300万円</td><td class="num"><b>約230〜330万</b></td></tr>
+  </table>
+  </div>
+  <h3 style="margin:16px 0 6px">300万円内に収めるレバー（効果順）</h3>
+  <div class="lever"><div class="n">1</div><div><b>航空券を7月中に買う</b> — 4人で20〜40万円差。SW早割の山は7〜8月初旬</div></div>
+  <div class="lever"><div class="n">2</div><div><b>パリの宿を€300〜350/室帯で選ぶ</b> — パリ4泊が44〜52万に</div></div>
+  <div class="lever"><div class="n">3</div><div><b>ディズニーホテルのグレード調整</b> — シャイエン／サンタフェ（3.5〜7万/室）、または泊まらず日帰り（−6〜14万）</div></div>
+  <div class="lever"><div class="n">4</div><div><b>ローマの観光を外して食に集中</b> — −2〜4万</div></div>
+  <div class="note">参考：v1（モンサンミッシェルあり・標準4★・ディズニーなし）は約220〜310万円。<b>MSM削除（−7.2〜12.6万）がホテル格上げ＋ディズニー追加をほぼ相殺</b>し、総額はほぼ横ばい。</div>
+</section>
+
+<section id="s5">
+  <div class="sec-head">
+    <div class="sec-num c-navy">5</div>
+    <div><h2>ホテル戦略（防犯・安全優先）</h2><p>安全は「建物のグレード」より「エリア」で買う</p></div>
+  </div>
+  <div class="tblwrap">
+  <table>
+    <tr><th>都市</th><th>泊まるエリア（固定推奨）</th><th>避けるエリア</th><th>ホテル例</th></tr>
+    <tr><td>パリ</td><td><b>オペラ地区</b>（夜も明るく飲食店多い）／<b>サンジェルマン（6区）</b>（高級住宅街・夜も安心）／<b>7区</b>（エッフェル塔側・閑静）</td><td>北駅・東駅周辺（10区）、18〜20区外縁。メトロ深夜利用</td><td>プルマン・トゥール・エッフェル（4★）／ラ・コンテス（4★）／ソフィテル・ル・スクリーブ（5★）／ルレ・クリスティン（サンジェルマン）</td></tr>
+    <tr><td>ローマ</td><td><b>プラーティ地区</b>（バチカン側の高級住宅街）／<b>スペイン広場〜チェントロ・ストーリコ</b>（夜22時頃まで人通り多・観光警察巡回）</td><td><b>テルミニ駅周辺</b>（コスパ良でも夜間のスリ・置き引き多発→今回は回避）</td><td>プラーティ or スペイン広場周辺の4★（€200〜300/室）</td></tr>
+    <tr><td>ディズニー</td><td>直営ホテル（パーク徒歩圏・ゲート内）</td><td>—</td><td>ニューポートベイ・クラブ（4★格・6〜9万/室・プール付き）。最上位はディズニーランドホテル（15〜22万/室）</td></tr>
+  </table>
+  </div>
+  <div class="note"><b>家族4人の部屋割り：</b>コネクティングルーム（内扉で繋がる2室）をリクエストすると安心。フリープラン見積もり時に指定可。実際のホテル名・空室・正確な価格は見積もりで確定。</div>
+</section>
+
+<section id="s6">
+  <div class="sec-head">
+    <div class="sec-num c-gold">6</div>
+    <div><h2>食事ガイド（フリープラン型の食事はこうなる）</h2><p>朝はホテル・昼夜は自由＝食事重視の希望に一番合う形</p></div>
+  </div>
+  <div class="card">
+    <h3>🇫🇷 パリ（4日）— 1人1日 約8,000〜15,000円</h3>
+    <ul class="tight" style="font-size:13.5px">
+      <li><b>朝</b>：ホテルビュッフェ（フリープランは基本朝食付き）or ブーランジェリーでクロワッサン＋カフェ（€5〜8）</li>
+      <li><b>昼</b>：ビストロのランチムニュ（定食 €20〜30）／クレープ等で軽く（€10前後）</li>
+      <li><b>夜</b>：ブラッスリー・ビストロで€40〜60/人。<b>1晩はセーヌ川ディナークルーズ</b>（バトー・ムッシュ 3コースフレンチ・3.5h・<b>¥25,894〜32,607/人</b>）にすると「クルーズ＋ちゃんとしたフレンチ」を一度に消化できておすすめ</li>
+      <li><b>ディズニー日</b>：園内は割高（ランチ€20〜30/人）。キャラクターダイニングは要予約</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>🇮🇹 ローマ（2日）— ここが食のメイン。1人1日 約10,000〜18,000円</h3>
+    <ul class="tight" style="font-size:13.5px">
+      <li><b>朝</b>：バールでコルネット＋カプチーノ立ち飲み（€3〜5）＝ローマの日常体験</li>
+      <li><b>昼</b>：トラットリアで<b>本場カルボナーラ／カチョ・エ・ペペ／アマトリチャーナ</b>（パスタ€12〜18）。テスタッチョ市場で切り売りピザ・スップリの食べ歩き€10〜15</li>
+      <li><b>夜</b>：<b>トラステヴェレ地区</b>のトラットリアで€30〜50/人。または<b>フードツアー</b>（約$137/人・ガイドと数軒はしご）＝「何を頼めばいいか分からない」問題を丸ごと解決、初心者に特におすすめ</li>
+      <li><b>ジェラート</b>は毎日どうぞ（€3〜4）</li>
+    </ul>
+  </div>
+  <div class="note"><b>予約すべき店だけ日本から予約</b>（ディナークルーズ・フードツアー・キャラクターダイニング）。他は当日ふらっとでOK＝疲労に合わせて調整できる。食費計は4人×7.5日で30〜45万円（§4計上済み）。</div>
+</section>
+
+<section id="s7">
+  <div class="sec-head">
+    <div class="sec-num c-coral">7</div>
+    <div><h2>次のアクション（フリープラン型の進め方）</h2><p>急ぐのは国際線だけ</p></div>
+  </div>
+  <div class="lever"><div class="n">1</div><div><b>見積もり依頼（JTB／HIS／阪急・同条件）</b>：9/19羽田発パリIN・9/26ローマ発羽田OUT（オープンジョー直行）／大人4名・2室（コネクティング希望）／パリ4泊（オペラ・サンジェルマン・7区の4★）＋ローマ2泊（プラーティ・スペイン広場周辺の4★）／パリ→ローマ便を含められるか確認</div></div>
+  <div class="lever"><div class="n">2</div><div><b>ディズニーホテルは対応外の会社が多い</b>→その場合は公式サイトで別途直予約（ホテル＋チケットのパッケージあり）</div></div>
+  <div class="lever"><div class="n">3</div><div><b>比較して決定</b>：見積もり合計 vs 個人手配（Google Flights＋Booking.com）。差が小さければサポート付きのフリープランを推奨</div></div>
+  <div class="lever"><div class="n">4</div><div><b>7月中に国際線を確定</b>（ここだけ急ぐ）。ホテル・ディズニー・現地予約は8月でよい</div></div>
+</section>
+
+<section id="s8">
+  <div class="sec-head">
+    <div class="sec-num c-navy">8</div>
+    <div><h2>注意事項と出典</h2><p>2026年9月時点の制度・値上げ情報</p></div>
+  </div>
+  <div class="card">
+    <ul class="tight" style="font-size:13.5px">
+      <li><b>ETIAS</b>：2026年Q4開始＋移行期間 → <b>9月の旅行では不要見込み</b>（出発前に最新確認。現在申請を受け付けるサイトは全て詐欺）。EES（顔・指紋登録）は稼働中＝入国審査に時間の余裕を</li>
+      <li><b>ルーヴル（€30）・ヴェルサイユ（€35）は2026年から非EU観光客向けに値上げ済み</b>（古い記事の€17〜22は旧料金）</li>
+      <li>為替1€=200円で総額約8%（15〜25万円）増</li>
+      <li>治安・スリ対策・持ち物は前回調査（europe-trip-plan.md §8-9）参照</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>主な出典（2026/7/5取得）</h3>
+    <ul class="src">
+      <li>為替：<a href="https://www.nikkei.com/markets/kawase/crossrate/">日経クロスレート</a>（7/4 €184.53・£215.41）</li>
+      <li>ITA羽田⇔ローマ直行：<a href="https://stworld.jp/airline/ITA-airways">STW</a>／<a href="https://access-guide.net/it-flight-tokyo/">発着ダイヤ</a></li>
+      <li>航空券相場：<a href="https://jp.trip.com/flights/tokyo-to-paris/airfares-tyo-par/">Trip.com 東京→パリ</a>／<a href="https://www.jal.co.jp/flights/ja-jp/%E3%83%91%E3%83%AA%E8%A1%8C%E3%81%8D%E8%88%AA%E7%A9%BA%E5%88%B8">JAL料金例</a>／パリ→ローマ：<a href="https://www.expedia.com/lp/flights/par/rom/paris-to-rome">Expedia</a></li>
+      <li>フリープラン実売：<a href="https://www.hankyu-travel.com/kaigai/keyword/%E3%82%A4%E3%82%BF%E3%83%AA%E3%82%A2%E3%80%80%E3%83%95%E3%83%A9%E3%83%B3%E3%82%B9%E3%80%80%EF%BC%92%E3%82%AB%E5%9B%BD%E3%80%80%E5%91%A8%E9%81%8A/">阪急交通社</a>／<a href="https://tabichat.jp/posts/57">たびチャット費用ガイド</a></li>
+      <li>パリ費用相場：<a href="https://www.travelwith.jp/area/europe/france/topics/post-32037/">トラベルスタンダードジャパン2026年版</a></li>
+      <li>入場料：<a href="https://artnewsjapan.com/article/35429">ルーヴル€30（ARTnews）</a>／<a href="https://franceparisinfo.hatenablog.com/entry/versailles-non-eu-ticket-prices-2026">ヴェルサイユ€35</a>／<a href="https://www.toureiffel.paris/jp/rates-opening-times">エッフェル塔公式</a>／<a href="https://www.bateaux-mouches.fr/en/cruise/information">バトームッシュ</a></li>
+      <li>パリ治安エリア：<a href="https://note.com/sumikiki/n/n3dfced56e2ed">在住者解説2026年版</a>／<a href="https://luxuryescapeplans.com/recommended-areas-in-paris/">エリア比較</a>／<a href="https://travel.buyma.com/contents/magazine/france-paris-security/">治安ガイド</a></li>
+      <li>ローマ治安エリア：<a href="https://sekaishinbun.net/kaigai/rome_termini_security/">テルミニ駅治安ガイド</a>／<a href="https://note.com/sumikiki/n/nf360d47a0a97">在住者解説2026年版</a>／<a href="https://luxuryescapeplans.com/rome-hotel-security/">治安重視ホテル選び</a></li>
+      <li>ディズニー：<a href="https://amazing-trip.xyz/t-blog/paris-disney-price/">1日券料金考察（約1.0〜1.9万円）</a>／<a href="https://francetabi.com/disney-paris-hotel/">公式ホテル料金別8選（ニューポートベイ6〜9万/泊）</a></li>
+      <li>ディナークルーズ：<a href="https://www.veltra.com/jp/europe/france/paris/a/14129">VELTRA バトー・ムッシュ（¥25,894〜32,607/人）</a></li>
+      <li>ETIAS：<a href="https://www.traveltourister.com/news/etias-2026-launch-date-complete-guide-us-uk-canada-australia/">2026ガイド</a>／ローマの食：<a href="https://rurubu.jp/andmore/article/18482">るるぶ</a>／<a href="https://www.byfood.com/ja/experiences/dessert-and-cakes-tasting-and-sightseeing-tour-in-rome-1933">byFood（$136.68〜）</a></li>
+    </ul>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  v2 ・ 調査日 2026/7/5 ・ 価格は実勢・変動あり ・ 詳細版：europe-cost-report.md ・ 前回調査：europe-trip-plan.md / europe-itineraries.md
+</footer>
+
+</body>
+</html>
