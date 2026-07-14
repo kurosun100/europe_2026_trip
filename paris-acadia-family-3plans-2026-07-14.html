@@ -237,6 +237,30 @@
     .london-clock div { padding: 7px 0; border-bottom: 1px dashed var(--line); }
     .london-clock b { color: var(--blue); }
 
+    .food-intro { padding: 24px 26px; margin-bottom: 18px; }
+    .food-intro h3 { margin: 0 0 8px; }
+    .food-intro p { margin: 0; color: var(--muted); }
+    .food-intro p + p { margin-top: 8px; }
+    .food-group { margin-top: 30px; }
+    .food-group h3 { margin: 0 0 12px; font-size: 1.3rem; }
+    .food-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    .food-card { display: flex; flex-direction: column; padding: 20px; }
+    .food-card h4 { margin: 0 0 5px; font-size: 1.08rem; }
+    .food-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .meal-types { display: flex; flex-wrap: wrap; gap: 6px; margin: 11px 0 0; }
+    .meal-type { padding: 5px 10px; border-radius: 7px; font-size: .75rem; font-weight: 900; letter-spacing: .03em; }
+    .meal-type.breakfast { color: #2f5c4b; background: var(--green-soft); }
+    .meal-type.lunch { color: #765011; background: var(--gold-soft); }
+    .meal-type.dinner { color: #8d3b2b; background: var(--coral-soft); }
+    .meal-type.snack { color: var(--blue); background: var(--blue-soft); }
+    .food-meta { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 10px; }
+    .pill { padding: 4px 9px; border-radius: 999px; color: var(--blue); background: var(--blue-soft); font-size: .73rem; font-weight: 800; }
+    .pill.reserve { color: #8d3b2b; background: var(--coral-soft); }
+    .pill.flex { color: #2f5c4b; background: var(--green-soft); }
+    .food-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: auto; padding-top: 14px; }
+    .food-link { display: inline-flex; align-items: center; min-height: 36px; padding: 6px 11px; border: 1px solid var(--line); border-radius: 999px; font-size: .8rem; font-weight: 800; text-decoration: none; }
+    .food-link.map { color: white; border-color: var(--blue); background: var(--blue); }
+
     .transfer {
       padding: 28px;
       background: linear-gradient(135deg, #f3eee3, #fff);
@@ -273,6 +297,7 @@
 
     @media (max-width: 900px) {
       .grid.three, .grid.two, .section-title, .budget-grid, .transfer-grid { grid-template-columns: 1fr; }
+      .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-title { gap: 8px; }
       .day { grid-template-columns: 82px 1fr; }
@@ -294,6 +319,7 @@
       .bar-row { grid-template-columns: 1fr auto; }
       .bar-track { grid-column: 1 / -1; grid-row: 2; }
       .verdict { grid-template-columns: 1fr; }
+      .food-grid { grid-template-columns: 1fr; }
     }
     @media print {
       body { background: white; font-size: 10pt; }
@@ -334,6 +360,7 @@
       <a href="#plan-a">A ディズニー</a>
       <a href="#plan-b">B パリ満喫</a>
       <a href="#plan-c">C ロンドン</a>
+      <a href="#food">食事候補</a>
       <a href="#transfer">空港送迎</a>
       <a href="#budget">予算</a>
       <a href="#next">決めた後</a>
@@ -594,6 +621,154 @@
       </footer>
     </section>
 
+    <section id="food">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Where to eat</p>
+          <h2>旅程に合わせた食事候補</h2>
+        </div>
+        <p>家族4人でも使いやすく、観光時間を削りにくい店を中心にしました。「予約する食事」と「当日決める食事」を分けるのが安全です。</p>
+      </div>
+
+      <article class="card food-intro">
+        <h3>先に押さえるなら3か所だけ</h3>
+        <p><strong>9月21日のルーヴル美術館後はル・フュモワ、9月23日の昼はレ・マルシュ、9月24日の昼はラ・フロッティーユ</strong>が旅程に特に合います。いずれも4名なら予約推奨です。それ以外は、体調や空腹具合に合わせて当日選べます。</p>
+        <p class="small">価格帯は1名あたりの料理代の目安（飲み物・サービス料等を除く）です。€＝おおむね€10〜20、€€＝€20〜40、€€€＝€40以上。営業時間・定休日・メニューは旅行直前に公式サイトで再確認してください。</p>
+      </article>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr><th>日付</th><th>朝食</th><th>昼食</th><th>夕食・補食</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>9月20日（日）</strong><br><span class="small">到着日</span></td><td>機内または空港</td><td>ホテル近くのル・リシェ。疲れていても移動が少ない</td><td>ブイヨン・シャルティエ、またはル・リシェ。行列や疲労があればフランプリで軽食</td></tr>
+            <tr><td><strong>9月21日（月）</strong><br><span class="small">ルーヴル＋ノートルダム</span></td><td>検討中のホテル朝食<br>€10×4名</td><td>13:45頃、ル・フュモワを予約</td><td>サン・レジスで休憩兼早めの夕食、またはホテル周辺へ戻る</td></tr>
+            <tr><td><strong>9月22日（火）</strong><br><span class="small">案により分岐</span></td><td>A・Cは早朝用を前日に準備。Bはコクリコ・モンマルトルも候補</td><td>Aはハクナ・マタタ、Bはモンマルトル周辺、Cは大英博物館内かセブン・ダイアルズ</td><td>A・Cは帰着時刻優先で軽め。Bはロフィスを予約する候補</td></tr>
+            <tr><td><strong>9月23日（水）</strong><br><span class="small">凱旋門＋エッフェル塔</span></td><td>検討中のホテル朝食<br>€10×4名</td><td>12:30頃、レ・マルシュを予約</td><td>クルーズ後は遅くなるため、ホテル周辺で軽めに</td></tr>
+            <tr><td><strong>9月24日（木）</strong><br><span class="small">ヴェルサイユ宮殿</span></td><td>フランプリで前日購入、またはホテルへBreakfast Boxを前日までに相談</td><td>12:00〜12:30頃、庭園内のラ・フロッティーユを予約</td><td>ホテル近くで軽食。翌朝に備えて早めに終了</td></tr>
+            <tr><td><strong>9月25日（金）</strong><br><span class="small">帰国</span></td><td>Breakfast Boxを希望する場合は前日までに依頼</td><td>機内・空港</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="food-group">
+        <h3>ホテル周辺：疲れた日にも使いやすい</h3>
+        <div class="food-grid">
+          <article class="card food-card">
+            <h4>ル・リシェ</h4>
+            <p>ホテルからすぐの終日営業型レストラン。到着日の昼食・夕食に最も使いやすく、日曜でも候補にできます。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span></div>
+            <div class="food-meta"><span class="pill">€€</span><span class="pill flex">当日でも候補</span><span class="pill">ホテル近く</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Richer+2+rue+Richer+75009+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://lericher.com/" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>ブイヨン・シャルティエ</h4>
+            <p>歴史ある大衆食堂。安さと雰囲気が魅力で予約不可。食事の質を最優先する店というより、パリらしい体験を楽しむ候補です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span></div>
+            <div class="food-meta"><span class="pill">€</span><span class="pill flex">予約不可</span><span class="pill">行列あり</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Bouillon+Chartier+Grands+Boulevards+7+rue+du+Faubourg+Montmartre+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.bouillon-chartier.com/en/bouillon-chartier-grands-boulevards-en/" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>ロフィス</h4>
+            <p>季節の食材を使うフレンチ・ビストロ。ホテル至近で「近所でも食事の質を重視したい夜」に向きます。日曜休業のため到着日には使えません。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span></div>
+            <div class="food-meta"><span class="pill">€€</span><span class="pill reserve">4名は予約推奨</span><span class="pill">火〜土向き</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=L%27Office+3+rue+Richer+75009+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.office-resto.com/" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>ラ・パリジェンヌ（カデ通り店）</h4>
+            <p>パンやペストリーを買う朝食候補。ホテル朝食を付けない日や、部屋で軽く済ませたい日に便利です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type breakfast">朝食</span><span class="meal-type snack">軽食</span></div>
+            <div class="food-meta"><span class="pill">€</span><span class="pill flex">持ち帰り</span><span class="pill">朝食候補</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=La+Parisienne+12+rue+Cadet+75009+Paris" target="_blank" rel="noopener">Googleマップ</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>フランプリ</h4>
+            <p>ホテルのすぐ近くにあるスーパー。水、果物、ヨーグルト、サンドイッチなどを前日に用意する実用枠です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type breakfast">朝食</span><span class="meal-type snack">軽食</span></div>
+            <div class="food-meta"><span class="pill">€</span><span class="pill flex">予約不要</span><span class="pill">早朝対策</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Franprix+5+rue+Geoffroy-Marie+75009+Paris" target="_blank" rel="noopener">Googleマップ</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h3>主要観光日に組み込みやすい店</h3>
+        <div class="food-grid">
+          <article class="card food-card">
+            <h4>ル・フュモワ</h4>
+            <p>ルーヴル美術館のすぐ向かい。午前の見学を13:30まで確保した後、移動時間をほとんど使わず休めます。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span></div>
+            <div class="food-meta"><span class="pill">€€〜€€€</span><span class="pill reserve">9/21昼は予約推奨</span><span class="pill">ルーヴル美術館</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Fumoir+6+rue+de+l%27Amiral+de+Coligny+75001+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.lefumoir.com/" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>ル・サン・レジス</h4>
+            <p>ノートルダム大聖堂から渡ったサン・ルイ島のブラッスリー。午後の休憩、デザート、早めの夕食に使いやすい候補です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span><span class="meal-type snack">カフェ</span></div>
+            <div class="food-meta"><span class="pill">€€</span><span class="pill flex">長い営業時間</span><span class="pill">ノートルダム大聖堂</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Le+Saint-Regis+6+rue+Jean+du+Bellay+75004+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.lesaintregis-paris.com/contact" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>レ・マルシュ</h4>
+            <p>凱旋門からエッフェル塔へ移動する途中に組み込みやすい伝統的なビストロ。12:30頃の昼食にすると15:30の塔入場まで余裕があります。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span></div>
+            <div class="food-meta"><span class="pill">€€</span><span class="pill reserve">9/23昼は予約推奨</span><span class="pill">エッフェル塔方面</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Les+Marches+5+rue+de+la+Manutention+75116+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.lesmarches-restaurant.com/" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>ラ・フロッティーユ</h4>
+            <p>ヴェルサイユ宮殿の庭園、グラン・カナル沿い。宮殿本館から庭園・トリアノン宮殿へ進む途中で休めるため、動線が優秀です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span></div>
+            <div class="food-meta"><span class="pill">€€</span><span class="pill reserve">9/24昼は予約推奨</span><span class="pill">庭園内</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=La+Flottille+Parc+du+Chateau+de+Versailles" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.laflottille.fr/" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>コクリコ・モンマルトル</h4>
+            <p>アベス通りのベーカリー兼朝食候補。B案のモンマルトル散策で、パンや軽食を取りたいときに寄りやすい場所です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type breakfast">朝食</span><span class="meal-type snack">軽食</span></div>
+            <div class="food-meta"><span class="pill">€</span><span class="pill flex">当日利用</span><span class="pill">B案向け</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Coquelicot+Montmartre+24+rue+des+Abbesses+75018+Paris" target="_blank" rel="noopener">Googleマップ</a></div>
+          </article>
+        </div>
+      </div>
+
+      <div class="food-group">
+        <h3>A案・C案の専用候補</h3>
+        <div class="food-grid">
+          <article class="card food-card">
+            <h4>レストラン・ハクナ・マタタ</h4>
+            <p>ディズニーランド・パーク内のクイックサービス。アトラクション時間を優先するA案の昼食に向きます。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span></div>
+            <div class="food-meta"><span class="pill">€</span><span class="pill flex">時間優先</span><span class="pill">A案</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Restaurant+Hakuna+Matata+Disneyland+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.disneylandparis.com/en-int/dining/disneyland-park/restaurant-hakuna-matata" target="_blank" rel="noopener">公式サイト</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>ウォルツ・アメリカン・レストラン</h4>
+            <p>ディズニーで食事も特別な思い出にしたい場合のテーブルサービス。時間と予算を使うため、ショーやアトラクション優先なら選ばなくても構いません。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span></div>
+            <div class="food-meta"><span class="pill">€€€</span><span class="pill reserve">事前予約</span><span class="pill">A案・記念食</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Walt%27s+An+American+Restaurant+Disneyland+Paris" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.disneylandparis.com/en-int/dining/disneyland-park" target="_blank" rel="noopener">公式一覧</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>セブン・ダイアルズ・マーケット</h4>
+            <p>複数の店から各自が選べるフードホール。大英博物館とコヴェント・ガーデンの間で、家族の好みが分かれても使いやすい候補です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type dinner">夕食</span></div>
+            <div class="food-meta"><span class="pill">£〜££</span><span class="pill flex">予約不要</span><span class="pill">C案</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Seven+Dials+Market+London+WC2H+9LX" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.coventgarden.london/brand-directory/seven-dials-market" target="_blank" rel="noopener">公式案内</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>大英博物館・コートカフェ</h4>
+            <p>サンドイッチ、サラダ、ケーキなどを館内で短時間に取れる実用候補。C案で見学時間を確保したい場合はこちらが最も安全です。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type snack">軽食</span></div>
+            <div class="food-meta"><span class="pill">£</span><span class="pill flex">移動なし</span><span class="pill">C案・時間優先</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=British+Museum+Great+Court+Cafe" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.britishmuseum.org/visit/food-and-drink" target="_blank" rel="noopener">公式案内</a></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <section id="transfer">
       <div class="section-title">
         <div>
@@ -613,7 +788,7 @@
             <p>Astotelはシャトルを提供せず、固定料金のパリ公式タクシーを推奨しています。CDG空港とパリ右岸は<strong>€56／台</strong>、事前予約は<strong>＋€7</strong>です。</p>
           </div>
         </div>
-        <div class="callout"><strong>今回のおすすめ：</strong>到着日はCDG空港の公式タクシー乗り場から乗車。帰国日はAcadiaのフロントに、9月25日05:15頃・成人4名・大型スーツケースの個数を伝えて事前予約を依頼します。4名なら追加人数料金はなく、荷物の追加料金もありません。大きな車両を確保できるかだけ確認してください。</div>
+        <div class="callout"><strong>今回のおすすめ：</strong>到着日はCDG空港の公式タクシー乗り場から乗車。帰国日はAcadiaのフロントに、9月25日05:15頃・成人4名・複数の大型スーツケースと機内持込手荷物があることを伝えて事前予約を相談します。4名なら追加人数料金はなく、荷物の追加料金もありません。全員と荷物が載る車両を確保できるか確認してください。</div>
       </article>
     </section>
 
@@ -698,14 +873,22 @@
           <li><a href="https://content.tfl.gov.uk/adult-fares.pdf">ロンドン交通局・2026年運賃</a></li>
           <li><a href="https://www.britishmuseum.org/about-us/contact-us">大英博物館・無料入場</a></li>
           <li><a href="https://www.disneylandparis.com/en-usd/faq/tickets-and-vacation-packages/buy-tickets-at-parks-entrance-ticket-counters">ディズニーランド・パリ公式料金案内</a></li>
+          <li><a href="https://lericher.com/">ル・リシェ公式</a></li>
+          <li><a href="https://www.bouillon-chartier.com/en/bouillon-chartier-grands-boulevards-en/">ブイヨン・シャルティエ公式</a></li>
+          <li><a href="https://www.office-resto.com/">ロフィス公式</a></li>
+          <li><a href="https://www.lefumoir.com/">ル・フュモワ公式</a></li>
+          <li><a href="https://www.lesmarches-restaurant.com/">レ・マルシュ公式</a></li>
+          <li><a href="https://www.laflottille.fr/">ラ・フロッティーユ公式</a></li>
+          <li><a href="https://www.disneylandparis.com/en-int/dining/disneyland-park">ディズニーランド・パリ公式レストラン一覧</a></li>
+          <li><a href="https://www.britishmuseum.org/visit/food-and-drink">大英博物館公式・飲食案内</a></li>
         </ul>
-        <p class="small">調査更新：2026年7月14日。入場券、列車、開館時間は変動します。特にユーロスターとディズニーランド・パリは、購入画面で指定日の価格と変更・取消条件を再確認してください。</p>
+        <p class="small">調査更新：2026年7月15日。入場券、列車、開館時間、飲食店の営業内容は変動します。特にユーロスターとディズニーランド・パリは、購入画面で指定日の価格と変更・取消条件を再確認してください。飲食店は旅行直前に公式サイトで営業時間と定休日を確認してください。</p>
       </article>
     </section>
   </main>
 
   <footer>
-    <div class="wrap">家族4人・パリ5泊旅行　旅程比較資料／Hôtel Acadia – Astotel想定／2026年7月14日作成</div>
+    <div class="wrap">家族4人・パリ5泊旅行　旅程比較資料／Hôtel Acadia – Astotel想定／2026年7月15日更新</div>
   </footer>
 </body>
 </html>
