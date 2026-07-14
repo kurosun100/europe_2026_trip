@@ -1,0 +1,711 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>家族4人のパリ旅行｜3つの旅程比較</title>
+  <style>
+    :root {
+      --ink: #17233b;
+      --muted: #5e6878;
+      --paper: #fffdf8;
+      --cream: #f4efe4;
+      --line: #ddd5c6;
+      --blue: #224a75;
+      --blue-soft: #eaf1f7;
+      --coral: #c85d46;
+      --coral-soft: #f9ebe7;
+      --green: #3f715f;
+      --green-soft: #e9f2ed;
+      --gold: #9a6a20;
+      --gold-soft: #f7efdc;
+      --shadow: 0 18px 48px rgba(23, 35, 59, .10);
+      --radius: 22px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 10% 0%, rgba(200, 93, 70, .10), transparent 28rem),
+        radial-gradient(circle at 95% 12%, rgba(34, 74, 117, .12), transparent 32rem),
+        var(--paper);
+      font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Noto Sans JP", sans-serif;
+      line-height: 1.75;
+    }
+
+    a { color: var(--blue); text-underline-offset: 3px; }
+    a:hover { color: var(--coral); }
+    strong { color: #101b30; }
+    .wrap { width: min(1160px, calc(100% - 36px)); margin: 0 auto; }
+
+    .hero {
+      padding: 72px 0 46px;
+      border-bottom: 1px solid rgba(221, 213, 198, .9);
+    }
+    .eyebrow {
+      margin: 0 0 10px;
+      color: var(--coral);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3 { line-height: 1.3; }
+    h1 {
+      max-width: 920px;
+      margin: 0;
+      font-family: Georgia, "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(2.25rem, 6vw, 4.7rem);
+      font-weight: 500;
+      letter-spacing: -.035em;
+    }
+    .lead {
+      max-width: 810px;
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: clamp(1rem, 2vw, 1.18rem);
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 26px; }
+    .chip {
+      padding: 8px 13px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .78);
+      font-size: .88rem;
+      font-weight: 700;
+    }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 44px;
+      padding: 9px 16px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      color: white;
+      background: var(--ink);
+      font: inherit;
+      font-size: .9rem;
+      font-weight: 800;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .button.alt { color: var(--ink); background: transparent; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--line);
+      background: rgba(255, 253, 248, .93);
+      backdrop-filter: blur(12px);
+    }
+    .nav-inner { display: flex; gap: 5px; overflow-x: auto; padding: 10px 0; scrollbar-width: none; }
+    .nav-inner::-webkit-scrollbar { display: none; }
+    nav a {
+      flex: 0 0 auto;
+      padding: 7px 11px;
+      border-radius: 999px;
+      color: var(--ink);
+      font-size: .84rem;
+      font-weight: 750;
+      text-decoration: none;
+    }
+    nav a:hover { background: var(--cream); }
+
+    main { padding: 24px 0 80px; }
+    section { scroll-margin-top: 78px; margin-top: 58px; }
+    .section-title { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 420px); gap: 30px; align-items: end; margin-bottom: 22px; }
+    .section-title h2 {
+      margin: 0;
+      font-family: Georgia, "Yu Mincho", "Hiragino Mincho ProN", serif;
+      font-size: clamp(1.85rem, 4vw, 3rem);
+      font-weight: 500;
+    }
+    .section-title p { margin: 0; color: var(--muted); }
+
+    .grid { display: grid; gap: 18px; }
+    .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      background: rgba(255, 255, 255, .84);
+      box-shadow: 0 8px 26px rgba(23, 35, 59, .06);
+    }
+    .summary-card { display: flex; flex-direction: column; padding: 24px; }
+    .summary-card.a { border-top: 6px solid var(--coral); }
+    .summary-card.b { border-top: 6px solid var(--green); }
+    .summary-card.c { border-top: 6px solid var(--blue); }
+    .label {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 5px 10px;
+      border-radius: 999px;
+      font-size: .75rem;
+      font-weight: 850;
+      letter-spacing: .04em;
+    }
+    .a .label { color: #8d3b2b; background: var(--coral-soft); }
+    .b .label { color: #2f5c4b; background: var(--green-soft); }
+    .c .label { color: var(--blue); background: var(--blue-soft); }
+    .summary-card h3 { margin: 13px 0 4px; font-size: 1.34rem; }
+    .summary-card .tagline { min-height: 52px; margin: 0 0 14px; color: var(--muted); }
+    .price { margin: 2px 0; font-family: Georgia, serif; font-size: 2rem; font-weight: 700; line-height: 1.2; }
+    .price-note { color: var(--muted); font-size: .82rem; }
+    .mini-list { margin: 16px 0 18px; padding-left: 1.25rem; }
+    .mini-list li + li { margin-top: 5px; }
+    .summary-card .button { margin-top: auto; }
+
+    .verdict {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 16px;
+      align-items: start;
+      margin-top: 20px;
+      padding: 23px 24px;
+      border: 1px solid #d8c58e;
+      border-radius: var(--radius);
+      background: var(--gold-soft);
+    }
+    .verdict .mark {
+      display: grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      color: white;
+      background: var(--gold);
+      font-weight: 900;
+    }
+    .verdict h3 { margin: 0 0 5px; }
+    .verdict p { margin: 0; }
+
+    .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: var(--radius); background: white; box-shadow: var(--shadow); }
+    table { width: 100%; border-collapse: collapse; min-width: 780px; }
+    th, td { padding: 15px 16px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+    th { color: white; background: var(--ink); font-size: .82rem; letter-spacing: .03em; }
+    tr:last-child td { border-bottom: 0; }
+    tbody tr:nth-child(even) { background: #fbf9f3; }
+    .center { text-align: center; }
+    .small { color: var(--muted); font-size: .84rem; }
+    .good { color: var(--green); font-weight: 850; }
+    .hard { color: var(--coral); font-weight: 850; }
+
+    .common-box { padding: 26px; }
+    .common-box h3 { margin: 0 0 10px; }
+    .facts { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; margin-top: 18px; }
+    .fact { padding: 15px; border-radius: 15px; background: var(--cream); }
+    .fact b { display: block; margin-bottom: 3px; font-size: 1.08rem; }
+    .fact span { color: var(--muted); font-size: .82rem; }
+
+    .plan {
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .plan-head { display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center; padding: 28px; color: white; }
+    .plan-a .plan-head { background: linear-gradient(135deg, #9c3f30, #d56d55); }
+    .plan-b .plan-head { background: linear-gradient(135deg, #2f5b4b, #57816e); }
+    .plan-c .plan-head { background: linear-gradient(135deg, #173c63, #386994); }
+    .plan-head .eyebrow { color: rgba(255,255,255,.75); }
+    .plan-head h2 { margin: 0; font-family: Georgia, "Yu Mincho", serif; font-size: clamp(1.65rem, 4vw, 2.7rem); font-weight: 500; }
+    .plan-head p { margin: 8px 0 0; color: rgba(255,255,255,.87); }
+    .plan-score { min-width: 120px; padding: 12px 16px; border: 1px solid rgba(255,255,255,.36); border-radius: 18px; text-align: center; background: rgba(255,255,255,.12); }
+    .plan-score b { display: block; color: white; font-family: Georgia, serif; font-size: 1.75rem; }
+    .plan-score span { font-size: .74rem; }
+    .days { padding: 8px 28px 26px; }
+    .day { display: grid; grid-template-columns: 100px 1fr 200px; gap: 20px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+    .day:last-child { border-bottom: 0; }
+    .date { font-weight: 900; }
+    .date span { display: block; color: var(--muted); font-size: .78rem; font-weight: 650; }
+    .day h3 { margin: 0 0 5px; font-size: 1.09rem; }
+    .day p { margin: 0; color: var(--muted); }
+    .time { color: var(--blue); font-size: .84rem; font-weight: 800; }
+    .time span { display: block; color: var(--muted); font-weight: 500; }
+    .day.focus { margin: 0 -28px; padding: 22px 28px; background: #fbf6eb; }
+
+    .plan-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; padding: 24px 28px 28px; border-top: 1px solid var(--line); background: #fbfaf6; }
+    .plan-foot h3 { margin: 0 0 8px; font-size: 1rem; }
+    .plan-foot ul { margin: 0; padding-left: 1.2rem; }
+
+    .london-clock { display: grid; grid-template-columns: 110px 1fr; gap: 0 14px; margin-top: 13px; }
+    .london-clock div { padding: 7px 0; border-bottom: 1px dashed var(--line); }
+    .london-clock b { color: var(--blue); }
+
+    .transfer {
+      padding: 28px;
+      background: linear-gradient(135deg, #f3eee3, #fff);
+    }
+    .transfer h3 { margin-top: 0; font-size: 1.25rem; }
+    .transfer-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .transfer-item { padding: 18px; border: 1px solid var(--line); border-radius: 16px; background: white; }
+    .transfer-item h4 { margin: 0 0 5px; font-size: 1rem; }
+    .transfer-item p { margin: 0; color: var(--muted); }
+    .callout { margin-top: 18px; padding: 17px 18px; border-left: 5px solid var(--coral); border-radius: 5px 14px 14px 5px; background: var(--coral-soft); }
+
+    .budget-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 18px; }
+    .budget-card { padding: 25px; }
+    .budget-card h3 { margin-top: 0; }
+    .bars { display: grid; gap: 14px; margin-top: 18px; }
+    .bar-row { display: grid; grid-template-columns: 135px 1fr 110px; gap: 12px; align-items: center; }
+    .bar-track { height: 12px; overflow: hidden; border-radius: 999px; background: var(--cream); }
+    .bar-fill { height: 100%; border-radius: inherit; }
+    .bar-fill.a { width: 85%; background: var(--coral); }
+    .bar-fill.b { width: 76%; background: var(--green); }
+    .bar-fill.c { width: 96%; background: var(--blue); }
+    .bar-value { text-align: right; font-size: .85rem; font-weight: 850; }
+
+    .checklist { display: grid; gap: 10px; padding: 0; list-style: none; }
+    .checklist li { position: relative; padding-left: 30px; }
+    .checklist li::before { content: "✓"; position: absolute; left: 0; top: 1px; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; color: white; background: var(--green); font-size: .72rem; font-weight: 900; }
+
+    .sources { padding: 25px; }
+    .sources h3 { margin-top: 0; }
+    .sources ul { columns: 2; column-gap: 34px; margin-bottom: 0; padding-left: 1.2rem; }
+    .sources li { break-inside: avoid; margin-bottom: 7px; }
+
+    footer { padding: 30px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
+
+    @media (max-width: 900px) {
+      .grid.three, .grid.two, .section-title, .budget-grid, .transfer-grid { grid-template-columns: 1fr; }
+      .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .section-title { gap: 8px; }
+      .day { grid-template-columns: 82px 1fr; }
+      .time { grid-column: 2; }
+      .plan-foot { grid-template-columns: 1fr; }
+      .sources ul { columns: 1; }
+    }
+    @media (max-width: 580px) {
+      .wrap { width: min(100% - 24px, 1160px); }
+      .hero { padding-top: 48px; }
+      .facts { grid-template-columns: 1fr; }
+      .plan-head { grid-template-columns: 1fr; }
+      .plan-score { justify-self: start; }
+      .days { padding-inline: 18px; }
+      .day { grid-template-columns: 1fr; gap: 5px; }
+      .time { grid-column: 1; }
+      .day.focus { margin-inline: -18px; padding-inline: 18px; }
+      .plan-foot { padding-inline: 18px; }
+      .bar-row { grid-template-columns: 1fr auto; }
+      .bar-track { grid-column: 1 / -1; grid-row: 2; }
+      .verdict { grid-template-columns: 1fr; }
+    }
+    @media print {
+      body { background: white; font-size: 10pt; }
+      nav, .hero-actions { display: none; }
+      .hero { padding: 20px 0; }
+      section { margin-top: 28px; }
+      .card, .table-wrap, .plan { box-shadow: none; break-inside: avoid; }
+      .plan { break-before: page; }
+      a { color: inherit; text-decoration: none; }
+      .wrap { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Paris family trip · decision guide</p>
+      <h1>パリ5泊、家族4人。<br>3つの旅程を比べる</h1>
+      <p class="lead">予約済みのHôtel Acadia – Astotelを拠点に、「ディズニーランド・パリへ行く」「パリをゆっくり楽しむ」「ロンドンへ日帰りする」を同じ条件で比較しました。家族会議でそのまま使える版です。</p>
+      <div class="chips">
+        <span class="chip">成人4名</span>
+        <span class="chip">2026年9月20日〜25日・5泊</span>
+        <span class="chip">Acadia・ツイン2室予約済み</span>
+        <span class="chip">航空券 167万円・確定</span>
+        <span class="chip">目標 250万〜300万円</span>
+      </div>
+      <div class="hero-actions">
+        <a class="button" href="#compare">最初に3案を比較</a>
+        <button class="button alt" type="button" onclick="window.print()">印刷・PDF保存</button>
+      </div>
+    </div>
+  </header>
+
+  <nav aria-label="ページ内メニュー">
+    <div class="wrap nav-inner">
+      <a href="#compare">3案比較</a>
+      <a href="#common">共通条件</a>
+      <a href="#plan-a">A ディズニー</a>
+      <a href="#plan-b">B パリ満喫</a>
+      <a href="#plan-c">C ロンドン</a>
+      <a href="#transfer">空港送迎</a>
+      <a href="#budget">予算</a>
+      <a href="#next">決めた後</a>
+    </div>
+  </nav>
+
+  <main class="wrap">
+    <section id="compare">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">At a glance</p>
+          <h2>最初に結論</h2>
+        </div>
+        <p>3案とも成立します。違いは「可能かどうか」ではなく、何に1日分の体力と予算を使いたいかです。</p>
+      </div>
+
+      <div class="grid three">
+        <article class="card summary-card a">
+          <span class="label">A · 思い出重視</span>
+          <h3>ディズニーへ行く</h3>
+          <p class="tagline">パリの主要名所とテーマパークを両方体験。希望者がいるなら一番後悔が少ない案。</p>
+          <div class="price">約285万円</div>
+          <div class="price-note">4名総額・ディズニー最大料金で保守的に試算</div>
+          <ul class="mini-list">
+            <li>終日観光は火曜と木曜に分散</li>
+            <li>初回は1日1パークを推奨</li>
+            <li>疲労度：中〜高</li>
+          </ul>
+          <a class="button" href="#plan-a">詳しい日程を見る</a>
+        </article>
+
+        <article class="card summary-card b">
+          <span class="label">B · 総合おすすめ</span>
+          <h3>ディズニーなし・パリ満喫</h3>
+          <p class="tagline">モンマルトルやオペラ地区を追加し、休憩と買い物の時間も確保。初パリとして最も安定。</p>
+          <div class="price">約275〜278万円</div>
+          <div class="price-note">オペラ座内部見学の有無などで変動</div>
+          <ul class="mini-list">
+            <li>パリらしい街歩きが最も充実</li>
+            <li>予定変更に強く、疲れを残しにくい</li>
+            <li>疲労度：低〜中</li>
+          </ul>
+          <a class="button" href="#plan-b">詳しい日程を見る</a>
+        </article>
+
+        <article class="card summary-card c">
+          <span class="label">C · 特別体験</span>
+          <h3>ディズニーなし＋ロンドン</h3>
+          <p class="tagline">1回の旅行でパリとロンドンを体験。ただし早朝から夜まで、3案で最も忙しい。</p>
+          <div class="price">約286〜300万円</div>
+          <div class="price-note">ユーロスター運賃次第。高値なら300万円超の可能性</div>
+          <ul class="mini-list">
+            <li>英国ETAが4名全員に必要</li>
+            <li>ロンドン滞在は実質6〜8時間</li>
+            <li>疲労度：非常に高い</li>
+          </ul>
+          <a class="button" href="#plan-c">詳しい日程を見る</a>
+        </article>
+      </div>
+
+      <div class="verdict">
+        <div class="mark">!</div>
+        <div>
+          <h3>選び方はシンプルです</h3>
+          <p><strong>家族の中に「ディズニーへ行きたい」人がいるならA</strong>。誰も強く希望していないなら、満足度と体力のバランスが最も良い<strong>B</strong>。ロンドンが「行けたら」ではなく「今回ぜひ行きたい」なら、全員が早朝移動に同意したうえで<strong>C</strong>です。</p>
+        </div>
+      </div>
+
+      <div class="table-wrap" style="margin-top:20px">
+        <table>
+          <thead>
+            <tr><th>比較</th><th>A ディズニー</th><th>B パリ満喫</th><th>C ロンドン</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>一番の魅力</strong></td><td>大人でも楽しめる特別な1日</td><td>パリの街そのものを深く楽しめる</td><td>一度に2か国を体験</td></tr>
+            <tr><td><strong>パリ滞在の余裕</strong></td><td>○</td><td class="good">◎</td><td>△</td></tr>
+            <tr><td><strong>体力負担</strong></td><td>中〜高</td><td class="good">最も軽い</td><td class="hard">最も重い</td></tr>
+            <tr><td><strong>予約の複雑さ</strong></td><td>中</td><td class="good">低</td><td class="hard">高</td></tr>
+            <tr><td><strong>予算の余裕</strong></td><td>約15万円</td><td class="good">約22万円</td><td>0〜14万円</td></tr>
+            <tr><td><strong>主なリスク</strong></td><td>閉園までいると疲れる</td><td>テーマパーク体験を逃す</td><td>鉄道遅延・国境審査・早朝移動</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="common">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Fixed conditions</p>
+          <h2>3案に共通する条件</h2>
+        </div>
+        <p>到着日と帰国日は無理をせず、ルーヴル美術館とヴェルサイユ宮殿には十分な時間を確保します。</p>
+      </div>
+      <article class="card common-box">
+        <h3>ホテルと航空便</h3>
+        <p>Hôtel Acadia – Astotelにツイン2室・5泊（ホテル総額€2,930.60）。9月20日08:00頃にパリ＝シャルル・ド・ゴール空港到着、9月25日09:40発で帰国します。最終日は観光を入れません。</p>
+        <div class="facts">
+          <div class="fact"><b>9/20 08:00頃</b><span>パリ到着・ホテルへ移動</span></div>
+          <div class="fact"><b>9/21 09:00</b><span>ルーヴル美術館を4〜4.5時間</span></div>
+          <div class="fact"><b>9/24 09:00</b><span>ヴェルサイユ宮殿・終日</span></div>
+          <div class="fact"><b>9/25 05:15頃</b><span>予約タクシーで空港へ</span></div>
+        </div>
+        <p class="small" style="margin:18px 0 0"><strong>Acadiaで確認済み：</strong>毎日の清掃・タオル交換、滞在中の冷房運用、利用日を選べる朝食（1名1日€10）、前日までに頼めるBreakfast Box。公式予約特典として、毎日補充される無料ミニバーとAstotel各ホテルの飲み物・軽食サービスも利用できます。</p>
+      </article>
+    </section>
+
+    <section id="plan-a" class="card plan plan-a">
+      <header class="plan-head">
+        <div>
+          <p class="eyebrow">Plan A</p>
+          <h2>ディズニーランド・パリへ行く</h2>
+          <p>テーマパークを入れても、主要なパリ観光に必要な時間を削らない配置です。</p>
+        </div>
+        <div class="plan-score"><b>約285万円</b><span>4名総額の作業予算</span></div>
+      </header>
+      <div class="days">
+        <article class="day">
+          <div class="date">9月20日<span>日曜日</span></div>
+          <div><h3>到着・休養日</h3><p>08:00頃空港着。入国・荷物受取後、公式タクシーでAcadiaへ。荷物を預け、昼食とホテル周辺の短い散歩だけにします。15:00以降チェックイン、早めの夕食と就寝。</p></div>
+          <div class="time">予定を入れすぎない<span>時差ぼけ対策を最優先</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月21日<span>月曜日</span></div>
+          <div><h3>ルーヴル美術館＋ノートルダム大聖堂</h3><p>09:00〜13:30をルーヴル美術館に確保。昼食と休憩後、16:00頃からノートルダム大聖堂へ。チュイルリー庭園は体力が残った場合だけ追加します。</p></div>
+          <div class="time">09:00〜17:30<span>美術館を急いで回らない</span></div>
+        </article>
+        <article class="day focus">
+          <div class="date">9月22日<span>火曜日</span></div>
+          <div><h3>ディズニーランド・パリ</h3><p>ホテルを07:00前後に出発し、開園前到着を目標にします。初回かつ1日だけなので、ディズニーランド・パーク1つに絞る案を推奨。夜のショーを見る場合も、翌日は11:00開始なので朝に余裕があります。</p></div>
+          <div class="time">終日・約60分で移動<span>地下鉄8号線→RER A線</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月23日<span>水曜日</span></div>
+          <div><h3>エトワール凱旋門＋エッフェル塔＋セーヌ川クルーズ</h3><p>11:00に凱旋門、昼食後にトロカデロへ。15:30頃からエッフェル塔頂上を2.5時間、19:00頃に塔近くから約1時間のクルーズ。前日の疲れを考え、朝は遅めにします。</p></div>
+          <div class="time">11:00〜20:15<span>地下鉄9号線が便利</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月24日<span>木曜日</span></div>
+          <div><h3>ヴェルサイユ宮殿</h3><p>07:15ホテル発、09:00に宮殿入場。宮殿本館、庭園、昼食、トリアノン宮殿を回り、18:00〜18:30頃にホテルへ。夜は近所で軽い夕食と荷造り。</p></div>
+          <div class="time">07:15〜18:30<span>地下鉄8号線→RER C線</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月25日<span>金曜日</span></div>
+          <div><h3>帰国</h3><p>05:15頃に予約タクシーでホテルを出発。Breakfast Boxを希望する場合は前日までにフロントへ申し込みます。09:40発のため観光は入れません。</p></div>
+          <div class="time">05:15ホテル発<span>空港到着06:15〜06:30目標</span></div>
+        </article>
+      </div>
+      <footer class="plan-foot">
+        <div><h3>この案が向いている家族</h3><ul><li>1人でもディズニーを強く希望している</li><li>テーマパークの終日歩行に対応できる</li><li>約10万円の入場予算を許容できる</li></ul></div>
+        <div><h3>率直な注意点</h3><ul><li>閉園までいると翌日に疲れが残る</li><li>2パークを1日で回ると滞在時間が薄くなる</li><li>日付指定券は価格と取消条件を購入前に確認</li></ul></div>
+      </footer>
+    </section>
+
+    <section id="plan-b" class="card plan plan-b">
+      <header class="plan-head">
+        <div>
+          <p class="eyebrow">Plan B</p>
+          <h2>ディズニーなし・パリをゆっくり楽しむ</h2>
+          <p>美術館を増やしすぎず、パリらしい街並み、買い物、カフェ休憩を楽しむ案です。</p>
+        </div>
+        <div class="plan-score"><b>約275〜278万円</b><span>4名総額の作業予算</span></div>
+      </header>
+      <div class="days">
+        <article class="day">
+          <div class="date">9月20日<span>日曜日</span></div>
+          <div><h3>到着・休養日</h3><p>空港からホテルへ移動後、ホテル周辺で昼食。午後はチェックインと休憩を中心にし、元気ならパサージュ・ジュフロワ周辺を短く歩きます。</p></div>
+          <div class="time">予定を入れすぎない<span>ホテル周辺だけで完結</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月21日<span>月曜日</span></div>
+          <div><h3>ルーヴル美術館＋ノートルダム大聖堂</h3><p>09:00〜13:30をルーヴル美術館に確保。昼食・休憩後にノートルダム大聖堂を見学します。主要作品を見る時間を削らない構成です。</p></div>
+          <div class="time">09:00〜17:30<span>共通の主要観光日</span></div>
+        </article>
+        <article class="day focus">
+          <div class="date">9月22日<span>火曜日</span></div>
+          <div><h3>モンマルトル＋オペラ地区＋買い物</h3><p>午前はサクレ・クール寺院とモンマルトルの街歩き。坂道はケーブルカーを利用します。午後はオペラ・ガルニエ、ギャラリー・ラファイエット、パリのアーケード街へ。17時頃にはホテルへ戻れる余裕のある日です。</p></div>
+          <div class="time">09:30〜17:00<span>カフェ休憩・買い物時間あり</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月23日<span>水曜日</span></div>
+          <div><h3>エトワール凱旋門＋エッフェル塔＋セーヌ川クルーズ</h3><p>11:00に凱旋門、15:30頃にエッフェル塔頂上、19:00頃にクルーズ。午前をさらに活用したい場合はシャンゼリゼ通りを追加できます。</p></div>
+          <div class="time">10:30〜20:15<span>ホテルから9号線で移動しやすい</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月24日<span>木曜日</span></div>
+          <div><h3>ヴェルサイユ宮殿</h3><p>宮殿本館だけで終わらせず、庭園とトリアノン宮殿まで見る1日。前日までの負担が軽いため、3案の中で最も余裕をもって楽しめます。</p></div>
+          <div class="time">07:15〜18:30<span>帰国前夜は早めに休む</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月25日<span>金曜日</span></div>
+          <div><h3>帰国</h3><p>05:15頃ホテル発。観光は入れず、予約タクシーで空港へ直行します。</p></div>
+          <div class="time">05:15ホテル発<span>09:40パリ発</span></div>
+        </article>
+      </div>
+      <footer class="plan-foot">
+        <div><h3>この案が向いている家族</h3><ul><li>初パリを急がず楽しみたい</li><li>街歩き、買い物、食事の時間を重視する</li><li>予定変更の余裕を残したい</li></ul></div>
+        <div><h3>追加候補</h3><ul><li>美術好きならモンマルトルの一部をオルセー美術館に変更</li><li>疲れた場合は午後をホテル休憩に変更</li><li>無料のAstotel軽食を休憩に活用</li></ul></div>
+      </footer>
+    </section>
+
+    <section id="plan-c" class="card plan plan-c">
+      <header class="plan-head">
+        <div>
+          <p class="eyebrow">Plan C</p>
+          <h2>ディズニーなし＋ロンドン日帰り</h2>
+          <p>成立はしますが、観光より移動と国境手続きの比重が大きい、特別希望者向けの案です。</p>
+        </div>
+        <div class="plan-score"><b>約286〜300万円</b><span>ユーロスター価格で変動</span></div>
+      </header>
+      <div class="days">
+        <article class="day">
+          <div class="date">9月20日<span>日曜日</span></div>
+          <div><h3>到着・休養日</h3><p>空港からAcadiaへ移動。ホテル周辺だけで過ごし、翌日以降に備えます。</p></div>
+          <div class="time">予定を入れすぎない<span>3案共通</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月21日<span>月曜日</span></div>
+          <div><h3>ルーヴル美術館＋ノートルダム大聖堂</h3><p>09:00〜13:30をルーヴル美術館、午後はノートルダム大聖堂。夜はロンドン用の荷物とパスポートを確認し、早めに就寝します。</p></div>
+          <div class="time">夜は早く休む<span>翌朝05時台に出発</span></div>
+        </article>
+        <article class="day focus">
+          <div class="date">9月22日<span>火曜日</span></div>
+          <div>
+            <h3>ユーロスターでロンドン日帰り</h3>
+            <p>早朝にパリ北駅へ。標準席は出発75〜90分前の到着が公式推奨です。ロンドンでは有料施設を詰め込まず、外観巡りと大英博物館を中心にします。</p>
+            <div class="london-clock" aria-label="ロンドン日帰りの目安">
+              <div><b>05:15頃</b></div><div>ホテル発・タクシーでパリ北駅へ</div>
+              <div><b>07時台</b></div><div>ユーロスターでパリ発</div>
+              <div><b>08:30頃</b></div><div>ロンドン着（ロンドンはパリより1時間遅い）</div>
+              <div><b>09:30〜</b></div><div>ビッグ・ベン、ウェストミンスター、バッキンガム宮殿外観</div>
+              <div><b>13:00〜</b></div><div>昼食後、大英博物館を約2時間</div>
+              <div><b>16時台</b></div><div>ロンドン・セント・パンクラス駅へ戻る</div>
+              <div><b>17:30前後</b></div><div>ロンドン発の便を優先</div>
+              <div><b>21時前後</b></div><div>パリ北駅着、ホテルへ</div>
+            </div>
+          </div>
+          <div class="time">約16時間の外出<span>パスポート・英国ETA必須</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月23日<span>水曜日</span></div>
+          <div><h3>エトワール凱旋門＋エッフェル塔＋セーヌ川クルーズ</h3><p>ロンドン翌日のため11:00開始。凱旋門、エッフェル塔、クルーズを同じ西側エリアでつなぎ、移動を減らします。</p></div>
+          <div class="time">11:00〜20:15<span>朝の回復時間を確保</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月24日<span>木曜日</span></div>
+          <div><h3>ヴェルサイユ宮殿</h3><p>09:00入場。体力が残っていれば庭園・トリアノン宮殿まで、疲れていれば15:30頃に切り上げます。夜は必ず荷造りと休養に充てます。</p></div>
+          <div class="time">07:15〜18:30<span>疲労時は早めに帰る</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月25日<span>金曜日</span></div>
+          <div><h3>帰国</h3><p>05:15頃ホテル発。ロンドン日帰りの遅延が帰国便へ直接影響しないよう、ロンドンを帰国前日には置いていません。</p></div>
+          <div class="time">05:15ホテル発<span>09:40パリ発</span></div>
+        </article>
+      </div>
+      <footer class="plan-foot">
+        <div><h3>この案が向いている家族</h3><ul><li>全員がロンドンを強く希望している</li><li>早朝出発と長時間歩行に対応できる</li><li>ユーロスターを早めに購入できる</li></ul></div>
+        <div><h3>必須条件</h3><ul><li>日本国旅券の場合、英国ETAを1人ずつ申請</li><li>往復とも駅へ75分以上前に到着</li><li>高い列車しか残っていれば無理に採用しない</li></ul></div>
+      </footer>
+    </section>
+
+    <section id="transfer">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Airport transfer</p>
+          <h2>家族が気にしている空港送迎</h2>
+        </div>
+        <p>「ホテルに送迎オプションがある」ことと、「ホテル専用・無料の送迎がある」ことは別です。</p>
+      </div>
+      <article class="card transfer">
+        <div class="transfer-grid">
+          <div class="transfer-item">
+            <h4>エリゼ・ユニオン</h4>
+            <p>提携会社による有料のプライベート送迎です。公式案内は空港送迎<strong>€90〜130</strong>で、車種により変動します。ホテル専用の無料シャトルではありません。</p>
+          </div>
+          <div class="transfer-item">
+            <h4>Hotel Acadia – Astotel</h4>
+            <p>Astotelはシャトルを提供せず、固定料金のパリ公式タクシーを推奨しています。CDG空港とパリ右岸は<strong>€56／台</strong>、事前予約は<strong>＋€7</strong>です。</p>
+          </div>
+        </div>
+        <div class="callout"><strong>今回のおすすめ：</strong>到着日はCDG空港の公式タクシー乗り場から乗車。帰国日はAcadiaのフロントに、9月25日05:15頃・成人4名・大型スーツケースの個数を伝えて事前予約を依頼します。4名なら追加人数料金はなく、荷物の追加料金もありません。大きな車両を確保できるかだけ確認してください。</div>
+      </article>
+    </section>
+
+    <section id="budget">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Budget view</p>
+          <h2>予算の見え方</h2>
+        </div>
+        <p>航空券167万円とホテル約56.6万円を固定し、未決済のユーロ費用は1ユーロ193円で保守的に計算しています。</p>
+      </div>
+      <div class="budget-grid">
+        <article class="card budget-card">
+          <h3>300万円に対する目安</h3>
+          <div class="bars">
+            <div class="bar-row"><b>A ディズニー</b><div class="bar-track"><div class="bar-fill a"></div></div><div class="bar-value">約285万円</div></div>
+            <div class="bar-row"><b>B パリ満喫</b><div class="bar-track"><div class="bar-fill b"></div></div><div class="bar-value">約275〜278万円</div></div>
+            <div class="bar-row"><b>C ロンドン</b><div class="bar-track"><div class="bar-fill c"></div></div><div class="bar-value">約286〜300万円</div></div>
+          </div>
+          <p class="small" style="margin-bottom:0">高額な買い物、ブランド品、まとまった土産代は含みません。為替やカード手数料に備えて予備費6万円を含んでいます。</p>
+        </article>
+        <article class="card budget-card">
+          <h3>案ごとに増減する費用</h3>
+          <ul>
+            <li><strong>A：</strong>ディズニー最大約9万9,600円</li>
+            <li><strong>B：</strong>モンマルトルは無料中心。オペラ座内部見学等のみ追加</li>
+            <li><strong>C：</strong>ユーロスター往復約8万〜16万円、英国ETA £20×4名、ロンドン交通£8.90×4名が目安</li>
+          </ul>
+          <p class="small">C案は列車が高ければ300万円を超えます。「4名往復の列車総額が16万円以内」を採否の目安にすると管理しやすくなります。</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="next">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Next steps</p>
+          <h2>家族で決めた後にすること</h2>
+        </div>
+        <p>先に3案のどれにするかを決め、その後、変更しにくいものから公式サイトで予約します。</p>
+      </div>
+      <div class="grid two">
+        <article class="card budget-card">
+          <h3>全案共通</h3>
+          <ol class="checklist">
+            <li>9月23日のエッフェル塔・15:30前後を確認</li>
+            <li>9月21日のルーヴル美術館・09:00を予約</li>
+            <li>9月24日のヴェルサイユ宮殿・09:00を予約</li>
+            <li>セーヌ川クルーズをエッフェル塔の後に配置</li>
+            <li>帰国日の空港タクシーをAcadiaへ依頼</li>
+          </ol>
+        </article>
+        <article class="card budget-card">
+          <h3>案別</h3>
+          <ol class="checklist">
+            <li>Aなら9月22日・1日1パーク券の価格と取消条件を確認</li>
+            <li>Bならオペラ・ガルニエ内部見学の希望を家族で確認</li>
+            <li>Cならユーロスターの時刻・4名総額を先に確認</li>
+            <li>Cなら英国ETAを4名が個別申請</li>
+            <li>予約画面と取消条件をPDF等で保存</li>
+          </ol>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <article class="card sources">
+        <h3>確認に使用した主な公式情報</h3>
+        <ul>
+          <li><a href="https://www.astotel.com/en/hotel/hotel-acadia-en/">Hôtel Acadia – Astotel公式</a></li>
+          <li><a href="https://www.astotel.com/en/faq-astotel-en/">Astotel・空港送迎FAQ</a></li>
+          <li><a href="https://elysees-paris-hotel.com/en/">エリゼ・ユニオン公式・送迎料金</a></li>
+          <li><a href="https://entreprendre.service-public.fr/vosdroits/F22127">フランス政府・空港タクシー料金</a></li>
+          <li><a href="https://www.ratp.fr/en/titres-et-tarifs/ticket-metro-train-rer">RATP・地下鉄/RER運賃</a></li>
+          <li><a href="https://www.louvre.fr/visiter">ルーヴル美術館公式</a></li>
+          <li><a href="https://www.toureiffel.paris/en/rates-opening-times">エッフェル塔公式</a></li>
+          <li><a href="https://en.chateauversailles.fr/2026-ticketing">ヴェルサイユ宮殿・2026年料金</a></li>
+          <li><a href="https://www.eurostar.com/travel-info/your-trip/check-in">ユーロスター・駅到着推奨時間</a></li>
+          <li><a href="https://www.eurostar.com/fr-fr/train/paris-londres">ユーロスター・パリ〜ロンドン</a></li>
+          <li><a href="https://www.gov.uk/guidance/check-when-you-can-get-an-electronic-travel-authorisation-eta">英国政府・ETA対象国</a></li>
+          <li><a href="https://www.gov.uk/check-uk-visa">英国政府・ETA料金</a></li>
+          <li><a href="https://content.tfl.gov.uk/adult-fares.pdf">ロンドン交通局・2026年運賃</a></li>
+          <li><a href="https://www.britishmuseum.org/about-us/contact-us">大英博物館・無料入場</a></li>
+          <li><a href="https://www.disneylandparis.com/en-usd/faq/tickets-and-vacation-packages/buy-tickets-at-parks-entrance-ticket-counters">ディズニーランド・パリ公式料金案内</a></li>
+        </ul>
+        <p class="small">調査更新：2026年7月14日。入場券、列車、開館時間は変動します。特にユーロスターとディズニーランド・パリは、購入画面で指定日の価格と変更・取消条件を再確認してください。</p>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">家族4人・パリ5泊旅行　旅程比較資料／Hôtel Acadia – Astotel想定／2026年7月14日作成</div>
+  </footer>
+</body>
+</html>
