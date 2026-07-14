@@ -288,6 +288,31 @@
     .checklist li { position: relative; padding-left: 30px; }
     .checklist li::before { content: "✓"; position: absolute; left: 0; top: 1px; display: grid; place-items: center; width: 21px; height: 21px; border-radius: 50%; color: white; background: var(--green); font-size: .72rem; font-weight: 900; }
 
+    .prep-overview { padding: 25px; }
+    .prep-overview h3 { margin: 0 0 8px; }
+    .prep-overview p { margin: 0; color: var(--muted); }
+    .progress-line { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: center; margin-top: 18px; }
+    .progress-track { height: 14px; overflow: hidden; border-radius: 999px; background: var(--cream); }
+    .progress-fill { width: 0; height: 100%; border-radius: inherit; background: linear-gradient(90deg, var(--green), #72a28d); transition: width .2s ease; }
+    .progress-count { min-width: 92px; text-align: right; font-weight: 850; }
+    .prep-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .text-button { padding: 7px 12px; border: 1px solid var(--line); border-radius: 999px; color: var(--ink); background: white; font: inherit; font-size: .78rem; font-weight: 800; cursor: pointer; }
+    .prep-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 18px; }
+    .prep-card { padding: 22px; }
+    .prep-card h3 { margin: 0; font-size: 1.12rem; }
+    .prep-card .deadline { display: inline-flex; margin: 7px 0 12px; padding: 4px 9px; border-radius: 999px; color: #765011; background: var(--gold-soft); font-size: .73rem; font-weight: 850; }
+    .task-list { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+    .task-list li { border-top: 1px solid var(--line); }
+    .task-list label { display: grid; grid-template-columns: 24px 1fr; gap: 10px; align-items: start; padding: 11px 0; cursor: pointer; }
+    .task-list input { width: 19px; height: 19px; margin: 3px 0 0; accent-color: var(--green); }
+    .task-list input:checked + span { color: var(--muted); text-decoration: line-through; text-decoration-thickness: 1.5px; }
+    .task-list small { display: block; margin-top: 2px; color: var(--muted); font-size: .78rem; line-height: 1.55; }
+    .prep-card.priority { border-top: 6px solid var(--coral); }
+    .prep-card.plan-only { border-top: 6px solid var(--blue); }
+    .status-note { margin-top: 18px; padding: 18px 20px; border-radius: 16px; background: var(--blue-soft); }
+    .status-note h3 { margin: 0 0 6px; font-size: 1rem; }
+    .status-note p { margin: 0; color: var(--muted); }
+
     .sources { padding: 25px; }
     .sources h3 { margin-top: 0; }
     .sources ul { columns: 2; column-gap: 34px; margin-bottom: 0; padding-left: 1.2rem; }
@@ -296,7 +321,7 @@
     footer { padding: 30px 0 50px; border-top: 1px solid var(--line); color: var(--muted); font-size: .82rem; }
 
     @media (max-width: 900px) {
-      .grid.three, .grid.two, .section-title, .budget-grid, .transfer-grid { grid-template-columns: 1fr; }
+      .grid.three, .grid.two, .section-title, .budget-grid, .transfer-grid, .prep-grid { grid-template-columns: 1fr; }
       .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-title { gap: 8px; }
@@ -320,10 +345,12 @@
       .bar-track { grid-column: 1 / -1; grid-row: 2; }
       .verdict { grid-template-columns: 1fr; }
       .food-grid { grid-template-columns: 1fr; }
+      .progress-line { grid-template-columns: 1fr; }
+      .progress-count { text-align: left; }
     }
     @media print {
       body { background: white; font-size: 10pt; }
-      nav, .hero-actions { display: none; }
+      nav, .hero-actions, .prep-actions { display: none; }
       .hero { padding: 20px 0; }
       section { margin-top: 28px; }
       .card, .table-wrap, .plan { box-shadow: none; break-inside: avoid; }
@@ -363,6 +390,7 @@
       <a href="#food">食事候補</a>
       <a href="#transfer">空港送迎</a>
       <a href="#budget">予算</a>
+      <a href="#prep">準備チェック</a>
       <a href="#next">決めた後</a>
     </div>
   </nav>
@@ -822,6 +850,149 @@
       </div>
     </section>
 
+    <section id="prep">
+      <div class="section-title">
+        <div>
+          <p class="eyebrow">Before departure</p>
+          <h2>フランス旅行までのチェックリスト</h2>
+        </div>
+        <p>期限の早いものから進める実用版です。チェック状態は、このページを開いた同じブラウザ内に保存されます。</p>
+      </div>
+
+      <article class="card prep-overview">
+        <h3>全体の進捗</h3>
+        <p>まずは「パスポート・保険・3案決定」、次に時間指定入場券を優先します。</p>
+        <div class="progress-line">
+          <div class="progress-track" role="progressbar" aria-label="旅行準備の進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="prep-progress"></div></div>
+          <div class="progress-count" id="prep-count">0 / 0 完了</div>
+        </div>
+        <div class="prep-actions"><button class="text-button" id="prep-reset" type="button">チェック状態を初期化</button></div>
+        <div class="status-note">
+          <h3>2026年9月旅行の入国手続き</h3>
+          <p>日本国籍の一般旅券で90日以内の観光ならビザは不要です。パスポートはフランス出国予定日から3か月以上有効で、発行から10年以内である必要があります。今回の期限目安は<strong>2026年12月25日以降</strong>です。ETIASは2026年第4四半期開始予定のため現時点では申請不要ですが、出発1か月前に再確認します。EESは空港で顔写真・指紋等を登録する仕組みで、旅行前の申請はありません。</p>
+        </div>
+      </article>
+
+      <div class="prep-grid">
+        <article class="card prep-card">
+          <h3>完了済み</h3>
+          <span class="deadline">予約・確認済み</span>
+          <ul class="task-list">
+            <li><label><input id="prep-flight" data-task type="checkbox" checked><span>往復航空券を予約・支払い済み<small>4名合計167万円</small></span></label></li>
+            <li><label><input id="prep-hotel" data-task type="checkbox" checked><span>Hotel Acadia – Astotelを予約済み<small>ツイン2室・5泊</small></span></label></li>
+            <li><label><input id="prep-housekeeping" data-task type="checkbox" checked><span>毎日の清掃・タオル交換を確認済み</span></label></li>
+            <li><label><input id="prep-aircon" data-task type="checkbox" checked><span>滞在中の冷房運用を確認済み</span></label></li>
+            <li><label><input id="prep-breakfast-confirmed" data-task type="checkbox" checked><span>朝食の日付指定とBreakfast Boxを確認済み</span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card priority">
+          <h3>最優先で確認すること</h3>
+          <span class="deadline">7月中</span>
+          <ul class="task-list">
+            <li><label><input id="prep-passport-name" data-task type="checkbox"><span>4名のパスポート氏名と航空券名義が完全に一致しているか確認</span></label></li>
+            <li><label><input id="prep-passport-validity" data-task type="checkbox"><span>パスポートの期限・発行日・破損の有無を確認<small>期限は少なくとも2026年12月25日以降、発行から10年以内</small></span></label></li>
+            <li><label><input id="prep-passport-copy" data-task type="checkbox"><span>顔写真ページを紙とスマートフォンに保存</span></label></li>
+            <li><label><input id="prep-plan-choice" data-task type="checkbox"><span>A・B・Cのどの旅程にするか家族で決定</span></label></li>
+            <li><label><input id="prep-epos-members" data-task type="checkbox"><span>4名それぞれのエポスカード保有状況と付帯保険を確認</span></label></li>
+            <li><label><input id="prep-insurance" data-task type="checkbox"><span>4名全員の海外旅行保険を確定<small>治療、救援者、賠償、携行品、航空機・手荷物遅延を確認</small></span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card priority">
+          <h3>共通の時間指定予約</h3>
+          <span class="deadline">販売開始後すぐ</span>
+          <ul class="task-list">
+            <li><label><input id="prep-eiffel" data-task type="checkbox"><span>エッフェル塔を4名分予約<small>9月23日15:30前後・頂上行き。60日前の7月25日頃から確認</small></span></label></li>
+            <li><label><input id="prep-louvre" data-task type="checkbox"><span>ルーヴル美術館を4名分予約<small>9月21日09:00</small></span></label></li>
+            <li><label><input id="prep-versailles" data-task type="checkbox"><span>ヴェルサイユ宮殿を4名分予約<small>9月24日09:00・Passportを想定</small></span></label></li>
+            <li><label><input id="prep-cruise" data-task type="checkbox"><span>セーヌ川クルーズを予約<small>9月23日19:00前後・エッフェル塔見学後</small></span></label></li>
+            <li><label><input id="prep-ticket-files" data-task type="checkbox"><span>全チケットのPDF、QRコード、取消条件を家族で共有</span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card plan-only">
+          <h3>選んだ案だけ対応</h3>
+          <span class="deadline">案決定後すぐ</span>
+          <ul class="task-list">
+            <li><label><input id="prep-plan-a-ticket" data-task type="checkbox"><span>A案：ディズニーの日付指定券を購入<small>9月22日・1日1パークを推奨</small></span></label></li>
+            <li><label><input id="prep-plan-a-app" data-task type="checkbox"><span>A案：公式アプリへチケット登録、レストラン希望を確認</span></label></li>
+            <li><label><input id="prep-plan-b-opera" data-task type="checkbox"><span>B案：オペラ・ガルニエ内部見学の希望と予約を確認</span></label></li>
+            <li><label><input id="prep-plan-c-eurostar" data-task type="checkbox"><span>C案：ユーロスター往復を予約<small>4名往復16万円以内を判断目安にする</small></span></label></li>
+            <li><label><input id="prep-plan-c-eta" data-task type="checkbox"><span>C案：英国ETAを4名それぞれ申請<small>1名£20。パスポート更新後は新しい旅券で申請</small></span></label></li>
+            <li><label><input id="prep-plan-c-cover" data-task type="checkbox"><span>C案：通信と旅行保険が英国でも有効か確認</span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card">
+          <h3>ホテル・食事・空港移動</h3>
+          <span class="deadline">8月中</span>
+          <ul class="task-list">
+            <li><label><input id="prep-taxi-mail" data-task type="checkbox"><span>Acadiaへ帰国日の公式タクシー手配可否を問い合わせ</span></label></li>
+            <li><label><input id="prep-taxi-details" data-task type="checkbox"><span>9月25日05:15・成人4名・複数の大型荷物と伝える</span></label></li>
+            <li><label><input id="prep-hotel-card-limit" data-task type="checkbox"><span>ホテル決済カードの利用可能額を確認<small>宿泊代と事前与信に対応できる枠を確保</small></span></label></li>
+            <li><label><input id="prep-hotel-deadline" data-task type="checkbox"><span>ホテルの無料取消・変更期限を予約確認書で再確認</span></label></li>
+            <li><label><input id="prep-restaurants" data-task type="checkbox"><span>予約推奨レストラン3店を予約<small>ル・フュモワ、レ・マルシュ、ラ・フロッティーユ</small></span></label></li>
+            <li><label><input id="prep-breakfast-choice" data-task type="checkbox"><span>9月21日・23日のホテル朝食を付けるか決定</span></label></li>
+            <li><label><input id="prep-allergy" data-task type="checkbox"><span>アレルギー・苦手食材を英語とフランス語で用意</span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card">
+          <h3>通信・カード・書類</h3>
+          <span class="deadline">8月中</span>
+          <ul class="task-list">
+            <li><label><input id="prep-esim" data-task type="checkbox"><span>4名のeSIM・海外ローミングを決定<small>少なくとも2名が常時通信できる状態にする</small></span></label></li>
+            <li><label><input id="prep-offline-map" data-task type="checkbox"><span>Googleマップのパリ周辺をオフライン保存</span></label></li>
+            <li><label><input id="prep-cards" data-task type="checkbox"><span>異なる国際ブランドのカードを2枚以上用意</span></label></li>
+            <li><label><input id="prep-pin" data-task type="checkbox"><span>カード暗証番号と紛失・盗難窓口を確認</span></label></li>
+            <li><label><input id="prep-cash" data-task type="checkbox"><span>少額のユーロ現金を用意</span></label></li>
+            <li><label><input id="prep-document-folder" data-task type="checkbox"><span>航空券、ホテル、保険、観光券を共通フォルダへ保存</span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card">
+          <h3>安全・荷物・健康</h3>
+          <span class="deadline">出発2週間前まで</span>
+          <ul class="task-list">
+            <li><label><input id="prep-tabireg" data-task type="checkbox"><span>外務省「たびレジ」に登録</span></label></li>
+            <li><label><input id="prep-medicine" data-task type="checkbox"><span>常用薬と薬剤情報を準備<small>旅行日数より少し多めに持つ</small></span></label></li>
+            <li><label><input id="prep-adapter" data-task type="checkbox"><span>C・Eタイプ対応の変換プラグを準備</span></label></li>
+            <li><label><input id="prep-security-bag" data-task type="checkbox"><span>斜め掛けバッグ、スマートフォンストラップ等のスリ対策を準備</span></label></li>
+            <li><label><input id="prep-luggage-rule" data-task type="checkbox"><span>航空会社の預け荷物・機内持込条件を再確認</span></label></li>
+            <li><label><input id="prep-luggage-tag" data-task type="checkbox"><span>スーツケースへ連絡先タグを付ける</span></label></li>
+            <li><label><input id="prep-emergency" data-task type="checkbox"><span>保険会社・カード会社・日本大使館の連絡先を紙でも用意</span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card">
+          <h3>出発直前</h3>
+          <span class="deadline">3日前〜前日</span>
+          <ul class="task-list">
+            <li><label><input id="prep-checkin" data-task type="checkbox"><span>航空会社のオンラインチェックイン</span></label></li>
+            <li><label><input id="prep-flight-status" data-task type="checkbox"><span>運航状況、出発ターミナル、集合時間を確認</span></label></li>
+            <li><label><input id="prep-weather" data-task type="checkbox"><span>パリの天気・気温・交通ストライキ情報を確認</span></label></li>
+            <li><label><input id="prep-epos-transit" data-task type="checkbox"><span>エポス保険を使う人は空港までの対象交通費をカード決済<small>利用明細・IC乗車履歴を保存</small></span></label></li>
+            <li><label><input id="prep-luggage-weight" data-task type="checkbox"><span>預け荷物と機内持込手荷物の重量を測る</span></label></li>
+            <li><label><input id="prep-battery" data-task type="checkbox"><span>モバイルバッテリーを機内持込へ分ける</span></label></li>
+            <li><label><input id="prep-offline-files" data-task type="checkbox"><span>パスポート以外の必要書類を4名の端末へオフライン保存</span></label></li>
+          </ul>
+        </article>
+
+        <article class="card prep-card">
+          <h3>現地で忘れないこと</h3>
+          <span class="deadline">パリ到着後</span>
+          <ul class="task-list">
+            <li><label><input id="prep-local-luggage" data-task type="checkbox"><span>9月20日：チェックイン前に荷物を預ける</span></label></li>
+            <li><label><input id="prep-local-breakfast" data-task type="checkbox"><span>9月20日：必要なら21日・23日の朝食を追加</span></label></li>
+            <li><label><input id="prep-local-versailles-food" data-task type="checkbox"><span>9月23日：ヴェルサイユ用朝食を購入、またはBreakfast Boxを相談</span></label></li>
+            <li><label><input id="prep-local-box" data-task type="checkbox"><span>9月24日：帰国日用Breakfast Boxを4名分依頼</span></label></li>
+            <li><label><input id="prep-local-taxi" data-task type="checkbox"><span>9月24日：帰国日のタクシー時刻と車両サイズを最終確認</span></label></li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
     <section id="next">
       <div class="section-title">
         <div>
@@ -881,6 +1052,16 @@
           <li><a href="https://www.laflottille.fr/">ラ・フロッティーユ公式</a></li>
           <li><a href="https://www.disneylandparis.com/en-int/dining/disneyland-park">ディズニーランド・パリ公式レストラン一覧</a></li>
           <li><a href="https://www.britishmuseum.org/visit/food-and-drink">大英博物館公式・飲食案内</a></li>
+          <li><a href="https://www.france-visas.gouv.fr/en/web/france-visas/japon">France-Visas・日本国籍の短期滞在</a></li>
+          <li><a href="https://www.france-visas.gouv.fr/en/votre-arrivee-en-france">France-Visas・入国時の必要書類</a></li>
+          <li><a href="https://travel-europe.europa.eu/en/etias">EU公式・ETIAS開始時期</a></li>
+          <li><a href="https://travel-europe.europa.eu/ees/ltr/faq">EU公式・EES</a></li>
+          <li><a href="https://www.eposcard.co.jp/smp/benefit/oversea/insurance.html">エポスカード・海外旅行傷害保険</a></li>
+          <li><a href="https://faq.eposcard.co.jp/faq/show/4278?category_id=57&amp;site_domain=default">エポスカード・空港までの交通費</a></li>
+          <li><a href="https://www.ezairyu.mofa.go.jp/tabireg/index.html">外務省・たびレジ</a></li>
+          <li><a href="https://ticket.toureiffel.paris/en">エッフェル塔公式チケット</a></li>
+          <li><a href="https://contact.louvre.fr/hc/en-gb/articles/12837462851229-Is-the-reservation-mandatory-Can-I-buy-tickets-at-the-ticket-offices-on-the-same-day">ルーヴル美術館・事前予約案内</a></li>
+          <li><a href="https://www.gov.uk/eta">英国政府・ETA公式</a></li>
         </ul>
         <p class="small">調査更新：2026年7月15日。入場券、列車、開館時間、飲食店の営業内容は変動します。特にユーロスターとディズニーランド・パリは、購入画面で指定日の価格と変更・取消条件を再確認してください。飲食店は旅行直前に公式サイトで営業時間と定休日を確認してください。</p>
       </article>
@@ -890,5 +1071,49 @@
   <footer>
     <div class="wrap">家族4人・パリ5泊旅行　旅程比較資料／Hôtel Acadia – Astotel想定／2026年7月15日更新</div>
   </footer>
+  <script>
+    (() => {
+      const root = document.getElementById('prep');
+      if (!root) return;
+      const storageKey = 'paris-acadia-prep-checklist-v1';
+      const boxes = [...root.querySelectorAll('input[type="checkbox"][data-task]')];
+      const count = document.getElementById('prep-count');
+      const fill = document.getElementById('prep-progress');
+      const track = fill ? fill.parentElement : null;
+
+      try {
+        const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+        if (saved && typeof saved === 'object') {
+          boxes.forEach((box) => {
+            if (Object.prototype.hasOwnProperty.call(saved, box.id)) box.checked = Boolean(saved[box.id]);
+          });
+        }
+      } catch (_) {}
+
+      const render = () => {
+        const completed = boxes.filter((box) => box.checked).length;
+        const percent = boxes.length ? Math.round((completed / boxes.length) * 100) : 0;
+        count.textContent = `${completed} / ${boxes.length} 完了（${percent}%）`;
+        fill.style.width = `${percent}%`;
+        if (track) track.setAttribute('aria-valuenow', String(percent));
+      };
+
+      const save = () => {
+        const state = {};
+        boxes.forEach((box) => { state[box.id] = box.checked; });
+        try { localStorage.setItem(storageKey, JSON.stringify(state)); } catch (_) {}
+        render();
+      };
+
+      boxes.forEach((box) => box.addEventListener('change', save));
+      document.getElementById('prep-reset')?.addEventListener('click', () => {
+        if (!window.confirm('チェック状態を初期状態に戻しますか？')) return;
+        boxes.forEach((box) => { box.checked = box.defaultChecked; });
+        try { localStorage.removeItem(storageKey); } catch (_) {}
+        render();
+      });
+      render();
+    })();
+  </script>
 </body>
 </html>
