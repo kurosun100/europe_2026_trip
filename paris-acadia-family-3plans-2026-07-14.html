@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <title>家族4人のパリ旅行｜3つの旅程比較</title>
+  <title>家族4人のパリ旅行｜4つの旅程比較</title>
   <style>
     :root {
       --ink: #17233b;
@@ -20,6 +20,8 @@
       --green-soft: #e9f2ed;
       --gold: #9a6a20;
       --gold-soft: #f7efdc;
+      --violet: #6a4d7a;
+      --violet-soft: #f1eaf4;
       --shadow: 0 18px 48px rgba(23, 35, 59, .10);
       --radius: 22px;
     }
@@ -131,6 +133,7 @@
 
     .grid { display: grid; gap: 18px; }
     .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .grid.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
     .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     .card {
       border: 1px solid var(--line);
@@ -142,6 +145,7 @@
     .summary-card.a { border-top: 6px solid var(--coral); }
     .summary-card.b { border-top: 6px solid var(--green); }
     .summary-card.c { border-top: 6px solid var(--blue); }
+    .summary-card.d { border-top: 6px solid var(--violet); }
     .label {
       display: inline-flex;
       align-self: flex-start;
@@ -154,6 +158,7 @@
     .a .label { color: #8d3b2b; background: var(--coral-soft); }
     .b .label { color: #2f5c4b; background: var(--green-soft); }
     .c .label { color: var(--blue); background: var(--blue-soft); }
+    .d .label { color: var(--violet); background: var(--violet-soft); }
     .summary-card h3 { margin: 13px 0 4px; font-size: 1.34rem; }
     .summary-card .tagline { min-height: 52px; margin: 0 0 14px; color: var(--muted); }
     .price { margin: 2px 0; font-family: Georgia, serif; font-size: 2rem; font-weight: 700; line-height: 1.2; }
@@ -212,6 +217,7 @@
     .plan-a .plan-head { background: linear-gradient(135deg, #9c3f30, #d56d55); }
     .plan-b .plan-head { background: linear-gradient(135deg, #2f5b4b, #57816e); }
     .plan-c .plan-head { background: linear-gradient(135deg, #173c63, #386994); }
+    .plan-d .plan-head { background: linear-gradient(135deg, #52345f, #836493); }
     .plan-head .eyebrow { color: rgba(255,255,255,.75); }
     .plan-head h2 { margin: 0; font-family: Georgia, "Yu Mincho", serif; font-size: clamp(1.65rem, 4vw, 2.7rem); font-weight: 500; }
     .plan-head p { margin: 8px 0 0; color: rgba(255,255,255,.87); }
@@ -282,6 +288,7 @@
     .bar-fill.a { width: 85%; background: var(--coral); }
     .bar-fill.b { width: 76%; background: var(--green); }
     .bar-fill.c { width: 96%; background: var(--blue); }
+    .bar-fill.d { width: 88%; background: var(--violet); }
     .bar-value { text-align: right; font-size: .85rem; font-weight: 850; }
 
     .checklist { display: grid; gap: 10px; padding: 0; list-style: none; }
@@ -322,6 +329,7 @@
 
     @media (max-width: 900px) {
       .grid.three, .grid.two, .section-title, .budget-grid, .transfer-grid, .prep-grid { grid-template-columns: 1fr; }
+      .grid.four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .food-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .section-title { gap: 8px; }
@@ -345,6 +353,7 @@
       .bar-track { grid-column: 1 / -1; grid-row: 2; }
       .verdict { grid-template-columns: 1fr; }
       .food-grid { grid-template-columns: 1fr; }
+      .grid.four { grid-template-columns: 1fr; }
       .progress-line { grid-template-columns: 1fr; }
       .progress-count { text-align: left; }
     }
@@ -364,8 +373,8 @@
   <header class="hero">
     <div class="wrap">
       <p class="eyebrow">Paris family trip · decision guide</p>
-      <h1>パリ5泊、家族4人。<br>3つの旅程を比べる</h1>
-      <p class="lead">予約済みのHôtel Acadia – Astotelを拠点に、「ディズニーランド・パリへ行く」「パリをゆっくり楽しむ」「ロンドンへ日帰りする」を同じ条件で比較しました。家族会議でそのまま使える版です。</p>
+      <h1>パリ5泊、家族4人。<br>4つの旅程を比べる</h1>
+      <p class="lead">予約済みのHôtel Acadia – Astotelを拠点に、「ディズニーランド・パリ」「パリをゆっくり楽しむ」「ロンドン日帰り」「モン・サン・ミシェル日帰り」を同じ条件で比較しました。家族会議でそのまま使える版です。</p>
       <div class="chips">
         <span class="chip">成人4名</span>
         <span class="chip">2026年9月20日〜25日・5泊</span>
@@ -374,7 +383,7 @@
         <span class="chip">目標 250万〜300万円</span>
       </div>
       <div class="hero-actions">
-        <a class="button" href="#compare">最初に3案を比較</a>
+        <a class="button" href="#compare">最初に4案を比較</a>
         <button class="button alt" type="button" onclick="window.print()">印刷・PDF保存</button>
       </div>
     </div>
@@ -382,11 +391,12 @@
 
   <nav aria-label="ページ内メニュー">
     <div class="wrap nav-inner">
-      <a href="#compare">3案比較</a>
+      <a href="#compare">4案比較</a>
       <a href="#common">共通条件</a>
       <a href="#plan-a">A ディズニー</a>
       <a href="#plan-b">B パリ満喫</a>
       <a href="#plan-c">C ロンドン</a>
+      <a href="#plan-d">D モン・サン・ミシェル</a>
       <a href="#food">食事候補</a>
       <a href="#transfer">空港送迎</a>
       <a href="#budget">予算</a>
@@ -402,10 +412,10 @@
           <p class="eyebrow">At a glance</p>
           <h2>最初に結論</h2>
         </div>
-        <p>3案とも成立します。違いは「可能かどうか」ではなく、何に1日分の体力と予算を使いたいかです。</p>
+        <p>4案とも成立します。違いは「可能かどうか」ではなく、何に1日分の体力と予算を使いたいかです。</p>
       </div>
 
-      <div class="grid three">
+      <div class="grid four">
         <article class="card summary-card a">
           <span class="label">A · 思い出重視</span>
           <h3>ディズニーへ行く</h3>
@@ -437,7 +447,7 @@
         <article class="card summary-card c">
           <span class="label">C · 特別体験</span>
           <h3>ディズニーなし＋ロンドン</h3>
-          <p class="tagline">1回の旅行でパリとロンドンを体験。ただし早朝から夜まで、3案で最も忙しい。</p>
+          <p class="tagline">1回の旅行でパリとロンドンを体験。ただし国境手続きもあり、4案で最も複雑。</p>
           <div class="price">約286〜300万円</div>
           <div class="price-note">ユーロスター運賃次第。高値なら300万円超の可能性</div>
           <ul class="mini-list">
@@ -447,28 +457,42 @@
           </ul>
           <a class="button" href="#plan-c">詳しい日程を見る</a>
         </article>
+
+        <article class="card summary-card d">
+          <span class="label">D · 世界遺産重視</span>
+          <h3>モン・サン・ミシェル日帰り</h3>
+          <p class="tagline">フランスを代表する世界遺産へ。長距離移動ですが、直通列車と接続シャトルで約5時間15分滞在できます。</p>
+          <div class="price">約284〜288万円</div>
+          <div class="price-note">列車・修道院・現地昼食などを保守的に試算</div>
+          <ul class="mini-list">
+            <li>列車＋シャトルは4名往復€256</li>
+            <li>修道院・村内・昼食の時間を確保</li>
+            <li>疲労度：高い</li>
+          </ul>
+          <a class="button" href="#plan-d">詳しい日程を見る</a>
+        </article>
       </div>
 
       <div class="verdict">
         <div class="mark">!</div>
         <div>
           <h3>選び方はシンプルです</h3>
-          <p><strong>家族の中に「ディズニーへ行きたい」人がいるならA</strong>。誰も強く希望していないなら、満足度と体力のバランスが最も良い<strong>B</strong>。ロンドンが「行けたら」ではなく「今回ぜひ行きたい」なら、全員が早朝移動に同意したうえで<strong>C</strong>です。</p>
+          <p><strong>家族の中に「ディズニーへ行きたい」人がいるならA</strong>。誰も強く希望していないなら、満足度と体力のバランスが最も良い<strong>B</strong>。ロンドンが「今回ぜひ行きたい」なら<strong>C</strong>、モン・サン・ミシェルを強く希望するなら<strong>D</strong>です。長距離日帰りを1つ選ぶなら、国境手続きがなく費用も読みやすいDの方がCより採用しやすいと考えます。</p>
         </div>
       </div>
 
       <div class="table-wrap" style="margin-top:20px">
         <table>
           <thead>
-            <tr><th>比較</th><th>A ディズニー</th><th>B パリ満喫</th><th>C ロンドン</th></tr>
+            <tr><th>比較</th><th>A ディズニー</th><th>B パリ満喫</th><th>C ロンドン</th><th>D モン・サン・ミシェル</th></tr>
           </thead>
           <tbody>
-            <tr><td><strong>一番の魅力</strong></td><td>大人でも楽しめる特別な1日</td><td>パリの街そのものを深く楽しめる</td><td>一度に2か国を体験</td></tr>
-            <tr><td><strong>パリ滞在の余裕</strong></td><td>○</td><td class="good">◎</td><td>△</td></tr>
-            <tr><td><strong>体力負担</strong></td><td>中〜高</td><td class="good">最も軽い</td><td class="hard">最も重い</td></tr>
-            <tr><td><strong>予約の複雑さ</strong></td><td>中</td><td class="good">低</td><td class="hard">高</td></tr>
-            <tr><td><strong>予算の余裕</strong></td><td>約15万円</td><td class="good">約22万円</td><td>0〜14万円</td></tr>
-            <tr><td><strong>主なリスク</strong></td><td>閉園までいると疲れる</td><td>テーマパーク体験を逃す</td><td>鉄道遅延・国境審査・早朝移動</td></tr>
+            <tr><td><strong>一番の魅力</strong></td><td>大人でも楽しめる特別な1日</td><td>パリの街そのものを深く楽しめる</td><td>一度に2か国を体験</td><td>フランスを代表する世界遺産</td></tr>
+            <tr><td><strong>パリ滞在の余裕</strong></td><td>○</td><td class="good">◎</td><td>△</td><td>△</td></tr>
+            <tr><td><strong>体力負担</strong></td><td>中〜高</td><td class="good">最も軽い</td><td class="hard">非常に高い</td><td class="hard">高い</td></tr>
+            <tr><td><strong>予約の複雑さ</strong></td><td>中</td><td class="good">低</td><td class="hard">高</td><td>中</td></tr>
+            <tr><td><strong>予算の余裕</strong></td><td>約15万円</td><td class="good">約22万円</td><td>0〜14万円</td><td>約12〜16万円</td></tr>
+            <tr><td><strong>主なリスク</strong></td><td>閉園までいると疲れる</td><td>テーマパーク体験を逃す</td><td>鉄道遅延・国境審査・早朝移動</td><td>長時間乗車・階段・列車遅延</td></tr>
           </tbody>
         </table>
       </div>
@@ -478,7 +502,7 @@
       <div class="section-title">
         <div>
           <p class="eyebrow">Fixed conditions</p>
-          <h2>3案に共通する条件</h2>
+          <h2>4案に共通する条件</h2>
         </div>
         <p>到着日と帰国日は無理をせず、ルーヴル美術館とヴェルサイユ宮殿には十分な時間を確保します。</p>
       </div>
@@ -574,7 +598,7 @@
         </article>
         <article class="day">
           <div class="date">9月24日<span>木曜日</span></div>
-          <div><h3>ヴェルサイユ宮殿</h3><p>宮殿本館だけで終わらせず、庭園とトリアノン宮殿まで見る1日。前日までの負担が軽いため、3案の中で最も余裕をもって楽しめます。</p></div>
+          <div><h3>ヴェルサイユ宮殿</h3><p>宮殿本館だけで終わらせず、庭園とトリアノン宮殿まで見る1日。前日までの負担が軽いため、4案の中で最も余裕をもって楽しめます。</p></div>
           <div class="time">07:15〜18:30<span>帰国前夜は早めに休む</span></div>
         </article>
         <article class="day">
@@ -602,7 +626,7 @@
         <article class="day">
           <div class="date">9月20日<span>日曜日</span></div>
           <div><h3>到着・休養日</h3><p>空港からAcadiaへ移動。ホテル周辺だけで過ごし、翌日以降に備えます。</p></div>
-          <div class="time">予定を入れすぎない<span>3案共通</span></div>
+          <div class="time">予定を入れすぎない<span>4案共通</span></div>
         </article>
         <article class="day">
           <div class="date">9月21日<span>月曜日</span></div>
@@ -649,6 +673,68 @@
       </footer>
     </section>
 
+    <section id="plan-d" class="card plan plan-d">
+      <header class="plan-head">
+        <div>
+          <p class="eyebrow">Plan D</p>
+          <h2>ディズニー・ロンドンなし＋モン・サン・ミシェル日帰り</h2>
+          <p>9月22日の直通NOMAD列車と接続シャトルを使い、修道院と村内に十分な時間を取る案です。</p>
+        </div>
+        <div class="plan-score"><b>約284〜288万円</b><span>4名総額の作業予算</span></div>
+      </header>
+      <div class="days">
+        <article class="day">
+          <div class="date">9月20日<span>日曜日</span></div>
+          <div><h3>到着・休養日</h3><p>空港からAcadiaへ移動し、チェックイン前は荷物を預けます。ホテル周辺だけで過ごし、長距離観光に備えて無理をしません。</p></div>
+          <div class="time">予定を入れすぎない<span>時差ぼけ対策を優先</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月21日<span>月曜日</span></div>
+          <div><h3>ルーヴル美術館＋ノートルダム大聖堂</h3><p>09:00〜13:30をルーヴル美術館に確保し、午後はノートルダム大聖堂へ。夜は早めにホテルへ戻り、翌日のBreakfast Boxまたは朝食を用意します。</p></div>
+          <div class="time">夜は早く休む<span>翌朝06:25頃に出発</span></div>
+        </article>
+        <article class="day focus">
+          <div class="date">9月22日<span>火曜日</span></div>
+          <div>
+            <h3>モン・サン・ミシェル日帰り</h3>
+            <p>パリ・モンパルナス駅から直通列車でポントルソンへ行き、同じ乗車券に含まれる接続シャトルを利用します。現地では修道院を先に見学し、遅めの昼食後に村内と城壁を歩きます。</p>
+            <div class="london-clock" aria-label="モン・サン・ミシェル日帰りの目安">
+              <div><b>05:50頃</b></div><div>起床・Breakfast Boxまたは前日購入した朝食</div>
+              <div><b>06:25頃</b></div><div>ホテル発・タクシーでパリ・モンパルナス駅へ</div>
+              <div><b>07:32</b></div><div>直通NOMAD列車でパリ発</div>
+              <div><b>11:23</b></div><div>ポントルソン着、11:45の接続シャトルへ</div>
+              <div><b>12:10</b></div><div>モン・サン・ミシェル着・外観撮影と徒歩移動</div>
+              <div><b>13:00〜14:30</b></div><div>モン・サン・ミシェル修道院</div>
+              <div><b>14:30〜15:20</b></div><div>村内で遅めの昼食</div>
+              <div><b>15:20〜16:50</b></div><div>村内・城壁・湾の景色。17:00までにバス乗り場へ</div>
+              <div><b>17:25</b></div><div>接続シャトル発、18:20にポントルソンから列車</div>
+              <div><b>22:09</b></div><div>パリ・モンパルナス駅着、22:40頃ホテルへ</div>
+            </div>
+          </div>
+          <div class="time">現地約5時間15分<span>往復は8時間以上の長距離移動</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月23日<span>水曜日</span></div>
+          <div><h3>エトワール凱旋門＋エッフェル塔＋セーヌ川クルーズ</h3><p>前夜の帰着が遅いため11:00開始。凱旋門、エッフェル塔、クルーズを西側エリアでつなぎ、朝の回復時間を確保します。</p></div>
+          <div class="time">11:00〜20:15<span>移動を増やさない</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月24日<span>木曜日</span></div>
+          <div><h3>ヴェルサイユ宮殿</h3><p>09:00入場。宮殿本館と庭園を優先し、疲労が強ければトリアノン宮殿を省いて早めに戻ります。夜は軽い夕食、荷造り、休養に充てます。</p></div>
+          <div class="time">07:15〜18:30<span>体力により短縮可能</span></div>
+        </article>
+        <article class="day">
+          <div class="date">9月25日<span>金曜日</span></div>
+          <div><h3>帰国</h3><p>05:15頃ホテル発。前日までにBreakfast Boxと、荷物が載る空港タクシーを確認します。</p></div>
+          <div class="time">05:15ホテル発<span>09:40パリ発</span></div>
+        </article>
+      </div>
+      <footer class="plan-foot">
+        <div><h3>この案が向いている家族</h3><ul><li>モン・サン・ミシェルを今回ぜひ見たい</li><li>長時間乗車と石段・坂道に対応できる</li><li>パリ街歩きの1日を世界遺産に替えてよい</li></ul></div>
+        <div><h3>率直な注意点</h3><ul><li>外出は約16時間、列車とシャトルだけで8時間以上</li><li>修道院と村内は石段や凹凸が多い</li><li>9月22日は満潮が17:24頃ですが潮位差は小さめ</li><li>運行時刻は出発直前にもSNCFで再確認</li></ul></div>
+      </footer>
+    </section>
+
     <section id="food">
       <div class="section-title">
         <div>
@@ -672,7 +758,7 @@
           <tbody>
             <tr><td><strong>9月20日（日）</strong><br><span class="small">到着日</span></td><td>機内または空港</td><td>ホテル近くのル・リシェ。疲れていても移動が少ない</td><td>ブイヨン・シャルティエ、またはル・リシェ。行列や疲労があればフランプリで軽食</td></tr>
             <tr><td><strong>9月21日（月）</strong><br><span class="small">ルーヴル＋ノートルダム</span></td><td>検討中のホテル朝食<br>€10×4名</td><td>13:45頃、ル・フュモワを予約</td><td>サン・レジスで休憩兼早めの夕食、またはホテル周辺へ戻る</td></tr>
-            <tr><td><strong>9月22日（火）</strong><br><span class="small">案により分岐</span></td><td>A・Cは早朝用を前日に準備。Bはコクリコ・モンマルトルも候補</td><td>Aはハクナ・マタタ、Bはモンマルトル周辺、Cは大英博物館内かセブン・ダイアルズ</td><td>A・Cは帰着時刻優先で軽め。Bはロフィスを予約する候補</td></tr>
+            <tr><td><strong>9月22日（火）</strong><br><span class="small">案により分岐</span></td><td>A・C・Dは早朝用を前日に準備。Bはコクリコ・モンマルトルも候補</td><td>Aはハクナ・マタタ、Bはモンマルトル周辺、Cは大英博物館内かセブン・ダイアルズ、Dは修道院後にラ・シレーヌ</td><td>A・C・Dは帰着時刻優先で軽め。Bはロフィスを予約する候補</td></tr>
             <tr><td><strong>9月23日（水）</strong><br><span class="small">凱旋門＋エッフェル塔</span></td><td>検討中のホテル朝食<br>€10×4名</td><td>12:30頃、レ・マルシュを予約</td><td>クルーズ後は遅くなるため、ホテル周辺で軽めに</td></tr>
             <tr><td><strong>9月24日（木）</strong><br><span class="small">ヴェルサイユ宮殿</span></td><td>フランプリで前日購入、またはホテルへBreakfast Boxを前日までに相談</td><td>12:00〜12:30頃、庭園内のラ・フロッティーユを予約</td><td>ホテル近くで軽食。翌朝に備えて早めに終了</td></tr>
             <tr><td><strong>9月25日（金）</strong><br><span class="small">帰国</span></td><td>Breakfast Boxを希望する場合は前日までに依頼</td><td>機内・空港</td><td>—</td></tr>
@@ -763,7 +849,7 @@
       </div>
 
       <div class="food-group">
-        <h3>A案・C案の専用候補</h3>
+        <h3>A案・C案・D案の専用候補</h3>
         <div class="food-grid">
           <article class="card food-card">
             <h4>レストラン・ハクナ・マタタ</h4>
@@ -792,6 +878,13 @@
             <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span><span class="meal-type snack">軽食</span></div>
             <div class="food-meta"><span class="pill">£</span><span class="pill flex">移動なし</span><span class="pill">C案・時間優先</span></div>
             <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=British+Museum+Great+Court+Cafe" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.britishmuseum.org/visit/food-and-drink" target="_blank" rel="noopener">公式案内</a></div>
+          </article>
+          <article class="card food-card">
+            <h4>クレープリー・ラ・シレーヌ</h4>
+            <p>モン・サン・ミシェル村内のクレープ店。修道院を先に見学し、14:30頃に遅めの昼食を取るD案の動線に合います。店内は小さいため、待ち時間が長ければ短時間の軽食へ切り替えます。</p>
+            <div class="meal-types" aria-label="利用時間帯"><span class="meal-type lunch">昼食</span></div>
+            <div class="food-meta"><span class="pill">€〜€€</span><span class="pill flex">D案・14:30頃</span><span class="pill">村内</span></div>
+            <div class="food-actions"><a class="food-link map" href="https://www.google.com/maps/search/?api=1&amp;query=Creperie+La+Sirene+Grande+Rue+50170+Le+Mont-Saint-Michel" target="_blank" rel="noopener">Googleマップ</a><a class="food-link" href="https://www.ot-montsaintmichel.com/en/restaurant/creperie-la-sirene/" target="_blank" rel="noopener">観光局案内</a></div>
           </article>
         </div>
       </div>
@@ -835,6 +928,7 @@
             <div class="bar-row"><b>A ディズニー</b><div class="bar-track"><div class="bar-fill a"></div></div><div class="bar-value">約285万円</div></div>
             <div class="bar-row"><b>B パリ満喫</b><div class="bar-track"><div class="bar-fill b"></div></div><div class="bar-value">約275〜278万円</div></div>
             <div class="bar-row"><b>C ロンドン</b><div class="bar-track"><div class="bar-fill c"></div></div><div class="bar-value">約286〜300万円</div></div>
+            <div class="bar-row"><b>D モン・サン・ミシェル</b><div class="bar-track"><div class="bar-fill d"></div></div><div class="bar-value">約284〜288万円</div></div>
           </div>
           <p class="small" style="margin-bottom:0">高額な買い物、ブランド品、まとまった土産代は含みません。為替やカード手数料に備えて予備費6万円を含んでいます。</p>
         </article>
@@ -844,8 +938,9 @@
             <li><strong>A：</strong>ディズニー最大約9万9,600円</li>
             <li><strong>B：</strong>モンマルトルは無料中心。オペラ座内部見学等のみ追加</li>
             <li><strong>C：</strong>ユーロスター往復約8万〜16万円、英国ETA £20×4名、ロンドン交通£8.90×4名が目安</li>
+            <li><strong>D：</strong>列車＋接続シャトル€256、修道院€52〜64、駅までのタクシー・昼食等を含めて1日約€450〜520</li>
           </ul>
-          <p class="small">C案は列車が高ければ300万円を超えます。「4名往復の列車総額が16万円以内」を採否の目安にすると管理しやすくなります。</p>
+          <p class="small">C案は列車が高ければ300万円を超えます。D案は公式の定額商品を使えるため費用を読みやすい一方、食事やタクシーで変動します。</p>
         </article>
       </div>
     </section>
@@ -861,7 +956,7 @@
 
       <article class="card prep-overview">
         <h3>全体の進捗</h3>
-        <p>まずは「パスポート・保険・3案決定」、次に時間指定入場券を優先します。</p>
+        <p>まずは「パスポート・保険・4案決定」、次に時間指定入場券を優先します。</p>
         <div class="progress-line">
           <div class="progress-track" role="progressbar" aria-label="旅行準備の進捗" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><div class="progress-fill" id="prep-progress"></div></div>
           <div class="progress-count" id="prep-count">0 / 0 完了</div>
@@ -893,7 +988,7 @@
             <li><label><input id="prep-passport-name" data-task type="checkbox"><span>4名のパスポート氏名と航空券名義が完全に一致しているか確認</span></label></li>
             <li><label><input id="prep-passport-validity" data-task type="checkbox"><span>パスポートの期限・発行日・破損の有無を確認<small>期限は少なくとも2026年12月25日以降、発行から10年以内</small></span></label></li>
             <li><label><input id="prep-passport-copy" data-task type="checkbox"><span>顔写真ページを紙とスマートフォンに保存</span></label></li>
-            <li><label><input id="prep-plan-choice" data-task type="checkbox"><span>A・B・Cのどの旅程にするか家族で決定</span></label></li>
+            <li><label><input id="prep-plan-choice" data-task type="checkbox"><span>A・B・C・Dのどの旅程にするか家族で決定</span></label></li>
             <li><label><input id="prep-epos-members" data-task type="checkbox"><span>4名それぞれのエポスカード保有状況と付帯保険を確認</span></label></li>
             <li><label><input id="prep-insurance" data-task type="checkbox"><span>4名全員の海外旅行保険を確定<small>治療、救援者、賠償、携行品、航空機・手荷物遅延を確認</small></span></label></li>
           </ul>
@@ -921,6 +1016,9 @@
             <li><label><input id="prep-plan-c-eurostar" data-task type="checkbox"><span>C案：ユーロスター往復を予約<small>4名往復16万円以内を判断目安にする</small></span></label></li>
             <li><label><input id="prep-plan-c-eta" data-task type="checkbox"><span>C案：英国ETAを4名それぞれ申請<small>1名£20。パスポート更新後は新しい旅券で申請</small></span></label></li>
             <li><label><input id="prep-plan-c-cover" data-task type="checkbox"><span>C案：通信と旅行保険が英国でも有効か確認</span></label></li>
+            <li><label><input id="prep-plan-d-nomad" data-task type="checkbox"><span>D案：9月22日のNOMAD列車＋接続シャトルを4名分予約<small>パリ07:32発、ポントルソン18:20発の往復</small></span></label></li>
+            <li><label><input id="prep-plan-d-abbey" data-task type="checkbox"><span>D案：モン・サン・ミシェル修道院の入場方法を確定<small>SNCF乗車券提示による提携料金も確認</small></span></label></li>
+            <li><label><input id="prep-plan-d-morning" data-task type="checkbox"><span>D案：9月21日に朝食とモンパルナス駅までのタクシーを手配</span></label></li>
           </ul>
         </article>
 
@@ -985,6 +1083,7 @@
           <ul class="task-list">
             <li><label><input id="prep-local-luggage" data-task type="checkbox"><span>9月20日：チェックイン前に荷物を預ける</span></label></li>
             <li><label><input id="prep-local-breakfast" data-task type="checkbox"><span>9月20日：必要なら21日・23日の朝食を追加</span></label></li>
+            <li><label><input id="prep-local-msm-box" data-task type="checkbox"><span>D案は9月21日：翌朝のBreakfast Boxまたは持参朝食を用意</span></label></li>
             <li><label><input id="prep-local-versailles-food" data-task type="checkbox"><span>9月23日：ヴェルサイユ用朝食を購入、またはBreakfast Boxを相談</span></label></li>
             <li><label><input id="prep-local-box" data-task type="checkbox"><span>9月24日：帰国日用Breakfast Boxを4名分依頼</span></label></li>
             <li><label><input id="prep-local-taxi" data-task type="checkbox"><span>9月24日：帰国日のタクシー時刻と車両サイズを最終確認</span></label></li>
@@ -999,7 +1098,7 @@
           <p class="eyebrow">Next steps</p>
           <h2>家族で決めた後にすること</h2>
         </div>
-        <p>先に3案のどれにするかを決め、その後、変更しにくいものから公式サイトで予約します。</p>
+        <p>先に4案のどれにするかを決め、その後、変更しにくいものから公式サイトで予約します。</p>
       </div>
       <div class="grid two">
         <article class="card budget-card">
@@ -1019,6 +1118,7 @@
             <li>Bならオペラ・ガルニエ内部見学の希望を家族で確認</li>
             <li>Cならユーロスターの時刻・4名総額を先に確認</li>
             <li>Cなら英国ETAを4名が個別申請</li>
+            <li>DならNOMAD列車＋接続シャトルと修道院入場を確定</li>
             <li>予約画面と取消条件をPDF等で保存</li>
           </ol>
         </article>
@@ -1052,6 +1152,14 @@
           <li><a href="https://www.laflottille.fr/">ラ・フロッティーユ公式</a></li>
           <li><a href="https://www.disneylandparis.com/en-int/dining/disneyland-park">ディズニーランド・パリ公式レストラン一覧</a></li>
           <li><a href="https://www.britishmuseum.org/visit/food-and-drink">大英博物館公式・飲食案内</a></li>
+          <li><a href="https://www.ter.sncf.com/normandie/decouvrir/offres-estivales/mont-saint-michel">SNCF NOMAD・モン・サン・ミシェル往復商品</a></li>
+          <li><a href="https://ter-fiches-horaires.sncf.fr/publish/V2%20Fiche%20horaires%20GRANVILLE-PARIS%20du%204%20juillet%20au%2011%20octobre%202026.pdf">SNCF NOMAD・2026年夏季公式時刻表</a></li>
+          <li><a href="https://www.ter.sncf.com/normandie/tarifs-cartes/ouverture-vente">SNCF NOMAD・2026年乗車券発売案内</a></li>
+          <li><a href="https://www.abbaye-mont-saint-michel.fr/en/visit/practical-information">モン・サン・ミシェル修道院・開館時間</a></li>
+          <li><a href="https://tickets.monuments-nationaux.fr/fr-FR/produits-seances?famille=2032866742410400491&amp;site=2032864763370400282">モン・サン・ミシェル修道院・公式チケット</a></li>
+          <li><a href="https://www.monuments-nationaux.fr/en/groups-tourism-professionals/what-is-advance-ticketing/rates-2026">フランス国立モニュメント・2026年料金</a></li>
+          <li><a href="https://www.ot-montsaintmichel.com/en/tide-schedules/">モン・サン・ミシェル観光局・潮汐表</a></li>
+          <li><a href="https://www.ot-montsaintmichel.com/en/restaurant/creperie-la-sirene/">モン・サン・ミシェル観光局・ラ・シレーヌ</a></li>
           <li><a href="https://www.france-visas.gouv.fr/en/web/france-visas/japon">France-Visas・日本国籍の短期滞在</a></li>
           <li><a href="https://www.france-visas.gouv.fr/en/votre-arrivee-en-france">France-Visas・入国時の必要書類</a></li>
           <li><a href="https://travel-europe.europa.eu/en/etias">EU公式・ETIAS開始時期</a></li>
@@ -1063,7 +1171,7 @@
           <li><a href="https://contact.louvre.fr/hc/en-gb/articles/12837462851229-Is-the-reservation-mandatory-Can-I-buy-tickets-at-the-ticket-offices-on-the-same-day">ルーヴル美術館・事前予約案内</a></li>
           <li><a href="https://www.gov.uk/eta">英国政府・ETA公式</a></li>
         </ul>
-        <p class="small">調査更新：2026年7月15日。入場券、列車、開館時間、飲食店の営業内容は変動します。特にユーロスターとディズニーランド・パリは、購入画面で指定日の価格と変更・取消条件を再確認してください。飲食店は旅行直前に公式サイトで営業時間と定休日を確認してください。</p>
+        <p class="small">調査更新：2026年7月15日。入場券、列車、開館時間、飲食店の営業内容は変動します。ユーロスター、ディズニーランド・パリ、モン・サン・ミシェル行きNOMAD列車は、購入画面で指定日の価格・時刻・変更取消条件を再確認してください。飲食店は旅行直前に公式サイトで営業時間と定休日を確認してください。</p>
       </article>
     </section>
   </main>
